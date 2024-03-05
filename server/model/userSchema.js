@@ -1,0 +1,72 @@
+import mongoose from "mongoose";
+import dotenv from "dotenv" 
+dotenv.config({path: "./config/config.env"});
+
+mongoose.connect(process.env.MONGO_URL)
+.then(()=>{
+    console.log('connected to the database');
+})
+.catch((e)=>{
+    console.log('Failed');
+})
+
+const signupSchema = new mongoose.Schema({
+    name:{
+        type: String,required: true,trim: true,min:5, max:100
+    },
+    email:{
+        type:String,unique:true,required:true,lowercase:true,trim:true
+    },
+    phone:{
+        type:Number,required:true 
+    },
+    password:{
+        type:String,required:true,minlength:6,maxlength:10  
+    },
+});
+const  usermodel = mongoose.model('mujRegistration', signupSchema);
+
+
+// postUserData schema
+
+const userDataSchema = new mongoose.Schema({
+    ticketNumber:{
+        type:String,
+    },
+    status:{
+        type: String,required: false,
+    },
+    name:{
+        type: String,required: true,trim: true,min:5, max:100
+    },
+    email:{
+        type:String,required:true,lowercase:true,trim:true
+    },
+    department:{
+        type:String, required:true, trim:true
+    },
+    subject:{
+        type:String,unique:false,required:true
+    },
+    location:{
+        type: String,required: false,trim: true
+    },
+    bankName:{
+        type:String,unique:false,required:false
+    },
+    category:{
+        type: String,required: false,trim: true
+    },
+    subCategory:{
+        type:String,unique:false,required:false
+    }
+    // description:{
+    //     type:String,unique:false,required:false
+    // }
+  },{timestamps:true}
+  );
+
+const userDataModel = mongoose.model('userTable', userDataSchema);
+
+export { usermodel, userDataModel };
+
