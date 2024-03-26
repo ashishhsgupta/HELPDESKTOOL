@@ -156,3 +156,33 @@ export const generateReport = async(req, res) =>{
         res.status(500).send('Internal server error');
     }
 };
+
+export const pendingTickets =async(req, res)=> {
+try{
+   const pendingTickets = await userDataModel.find({status: 'Pending'});
+   res.status(200).json(pendingTickets);
+}catch(error){
+  console.error('Error fetching pending tickets:', error);
+  res.status(500).json({error: 'Internal server error'});
+};
+}
+
+export const resolvedTickets =async(req, res)=> {
+    try{
+       const pendingTickets = await userDataModel.find({status: 'Resolved'});
+       res.status(200).json(pendingTickets);
+    }catch(error){
+      console.error('Error fetching pending tickets:', error);
+      res.status(500).json({error: 'Internal server error'});
+    };
+    }
+
+export const progressTickets =async(req, res)=> {
+    try{
+       const pendingTickets = await userDataModel.find({status: 'Progress'});
+       res.status(200).json(pendingTickets);
+    }catch(error){
+      console.error('Error fetching pending tickets:', error);
+      res.status(500).json({error: 'Internal server error'});
+    };
+    }

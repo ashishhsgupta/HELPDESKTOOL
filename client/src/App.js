@@ -6,11 +6,12 @@ import Registration from './components/Login/Registration';
 import Home from './components/Pages/Home';
 import CreateTicket from './components/Pages/CreateTicket';
 import AllTicket from "./components/Pages/AllTicket";
-import Reopen from './components/Pages/Reopen';
+import Progress from './components/Pages/Progress';
 import PendingTicket from './components/Pages/PendingTicket';
 import PreviewRecords from './components/Pages/PreviewRecords';
 import UpdateRecords from './components/Pages/UpdateRecords';
 import GenerateReport from "./components/Pages/GenerateReport";
+import ResolveTicket from "./components/Pages/ResolveTicket";
 
 
 
@@ -28,11 +29,12 @@ function App() {
         <Route path='/dashboard' element={<Home />}/>
         <Route path='/createticket' element={<CreateTicket/>} />
         <Route path='/allTicket' element={<AllTicket />} />
-        <Route path='/reopen' element={<Reopen />} />
+        <Route path='/progress' element={<Progress />} />
         <Route path='/pendingTicket' element={<PendingTicket/>}/>
         <Route path='/preview' element={<PreviewRecords/>}/>
         <Route path='/updateRecord' element={<UpdateRecords/>}/>
         <Route path='generateReport' element={<GenerateReport />} />
+        <Route path='resolvedTicket' element={<ResolveTicket/>}/>
 
     </Routes>
     </>

@@ -4,6 +4,7 @@
 
 .allTicket-flex{
     display: flex;
+    height: 100vh!important;
   } 
   .nav-page{
     background-color:#E59866;

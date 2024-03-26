@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +7,7 @@ import '../Pages/Header.css';
 
 
 const Sidebar = () =>{
+  const [activeLink, setActiveLink] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
   const role = sessionStorage.getItem('role');
@@ -17,6 +18,11 @@ const Sidebar = () =>{
     navigate('/login');
   };
  
+  const handleClick =(link)=>{
+    if(activeLink !== link){
+    setActiveLink(link);
+    }
+  }
   return (
    <>
       <div className='sidebar'>
@@ -36,7 +42,8 @@ const Sidebar = () =>{
           </li>
           {role === 'user' && (
           <li>
-          <Link to="/createTicket" className='linkList'>
+          <Link to="/createTicket" 
+          onClick={()=> handleClick('Raise a ticket')} className={activeLink === 'Raise a ticket' ? 'active': ''}>
             <div className='liList'>
               <i className="bi-telephone-plus me-2"></i>
               <span className='pageName'>Raise a ticket +</span>
@@ -45,25 +52,28 @@ const Sidebar = () =>{
           </li>
           )} 
           <li>
-          <Link to="/allTicket" className='linkList'>
+          <Link to="/allTicket"
+          onClick={()=> handleClick('All Ticket')} className={activeLink === 'All Ticket' ? 'active' :''}>
             <div className='liList'>
               <i className="bi-basket3-fill me-2"></i>
               <span className='pageName'>All Ticket</span>
             </div>
           </Link>
           </li>
-            {role === 'user' && (
+      
           <li>
-          <Link to="/reopen" className='linkList'>
+          <Link to="/progress" 
+          onClick={()=>handleClick('progress')} className={activeLink === 'progress' ? 'active' : ''}>
             <div className='liList'>
               <i className="bi-person-check me-2"></i>
-              <span className='pageName'>Reopen Ticket</span>
+              <span className='pageName'>Progress</span>
             </div>
           </Link>
           </li>
-          )}
+          
           <li>
-          <Link to="/pendingTicket" className='linkList'>
+          <Link to="/pendingTicket" 
+          onClick={()=> handleClick('Pending')} className={activeLink === 'Pending' ? 'active' : ''}>
             <div className='liList'>
               <i className="bi-hand-index me-2"></i>
               <span className='pageName'>Pending</span>
@@ -79,7 +89,8 @@ const Sidebar = () =>{
           </Link> */}
           </li>
           <li>
-          <Link to="/resolved" className='linkList'>
+          <Link to="/resolvedTicket" 
+          onClick={()=> handleClick('Resolved')} className={activeLink === 'Resolved' ? 'active' : ''}>
             <div className='liList'>
               <i className="bi-journal-check me-2"></i>
               <span className='pageName'>Resolved</span>
@@ -87,7 +98,8 @@ const Sidebar = () =>{
           </Link>
           </li>
           <li>
-          <Link to="/generateReport" className='linkList'>
+          <Link to="/generateReport"
+          onClick={()=> handleClick('Report')} className={activeLink === 'Report' ? 'active' : ''}>
             <div className='liList'>
               <i className="bi-table me-2"></i>
               <span className='pageName'>Report</span>

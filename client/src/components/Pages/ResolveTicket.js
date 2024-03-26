@@ -11,10 +11,10 @@ import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 
 
-const PendingTicket = ({data}) => {
+const ResolvedTicket = ({data}) => {
   const navigate = useNavigate();
 
-const [pendingTickets, setPendingTickets]= useState([]);
+const [resolvedTicket, setResolvedTicket]= useState([]);
   const [filteredData, setFilteredData] = useState(data);
    useEffect(()=>{
     setFilteredData(data);
@@ -33,9 +33,9 @@ const [pendingTickets, setPendingTickets]= useState([]);
   const [userCount, setUserCount] = useState(0);
 
       useEffect(()=> {
-        axios.get('http://localhost:2001/api/ticket/pendingTicket')
+        axios.get('http://localhost:2001/api/ticket/resolvedTicket')
         .then(response =>{
-          setPendingTickets(response.data);
+          setResolvedTicket(response.data);
          
           setUsers(response.data);
           setUsers2(response.data)
@@ -101,7 +101,7 @@ const handleModelDelete = (modelValue) =>{
     </div>
     <div className='table-head'>
       <div className='search-box'>
-      <div><h4>Total Pending Counts : {userCount}</h4></div>
+      <div><h4>Total Resolve Tickets : {userCount}</h4></div>
       <SearchFilter users={users} setUsers={setUsers} users2={users2} handleSearch={handleSearch}/>
       </div>
         <table className='customers'>
@@ -118,7 +118,7 @@ const handleModelDelete = (modelValue) =>{
           </thead>
           <tbody>
             {
-             pendingTickets.map((user, index ) => (
+             resolvedTicket.map((user, index ) => (
               <tr key={user._id}>
                 <td className='sr-no'>{index+1+(currentPage-1)*recordsPerPage}</td>
                 <td>{user.ticketNumber}</td>
@@ -127,7 +127,6 @@ const handleModelDelete = (modelValue) =>{
                 <td>{user.subject}</td>
                 <td>{user.status}</td>
                 <td className='td-action1'onClick={() =>handlePreview(user)}>Preview</td>
-                <td className='td-action2' onClick={()=>handleUpdate(user)}>Update</td>
                 <td className='td-action3' onClick={()=>deleteData(user,index+1+ (currentPage - 1) * recordsPerPage)}>Delete</td>
               </tr>
 ))}
@@ -231,4 +230,4 @@ const handleModelDelete = (modelValue) =>{
    }
  }
 }
-export default PendingTicket
+export default ResolvedTicket;

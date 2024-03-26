@@ -76,6 +76,9 @@ const GenerateReport = () => {
     </div><br/>
     <div className='report-download-btn'>
       <button onClick={handleDownload}>Download Report</button>
+    </div><br/>
+    <div className='report-alert'>
+      <p>Note:Reports may take time to sync with the entered data. Please be patient while the download completes.</p>
     </div>
     </div>
     </div>
