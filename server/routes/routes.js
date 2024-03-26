@@ -1,5 +1,5 @@
 import express from "express";
-import { usersignup, usersignin, postUserData, updateRecords, deleteRecord } from "../userController/userController.js";
+import { usersignup, usersignin, ticketCount, postUserData, updateRecords, deleteRecord, generateReport } from "../userController/userController.js";
 import { userDataModel } from "../model/userSchema.js";
 
 const router = express();
@@ -9,7 +9,8 @@ router.post('/api/v2/signin', usersignin);
 router.post('/api/v3/postData',  postUserData);
 router.put('/api/v4/updateRecords/:id', updateRecords);
 router.delete('/api/v5/removeRecord/:id', deleteRecord);
-
+router.get('/api/data/count', ticketCount);
+router.get('/api/report/downloadReport', generateReport);
 
 
 router.get('/api/getUserdata', async (req, res)=> {
@@ -27,15 +28,15 @@ router.post('/generateTicket', async (req, res) => {
      res.json({ ticketNumber });  
 });
 
-router.get('/api/data/count', async (req, res) => {
-    try {
-      const count = await userDataModel.countDocuments();
-      res.json({ count });
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Server Error' });
-    }
-  });
+// router.get('/api/data/count', async (req, res) => {
+//     try {
+//       const count = await userDataModel.countDocuments();
+//       res.json({ count });
+//     } catch (err) {
+//       console.error(err);
+//       res.status(500).json({ error: 'Server Error' });
+//     }
+//   });
   
 
 

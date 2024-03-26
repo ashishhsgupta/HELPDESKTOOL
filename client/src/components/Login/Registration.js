@@ -7,21 +7,25 @@ import axios from 'axios';
 const Registration = () => {
 
 const navigate = useNavigate();
+const[role, setRole] = useState("user");
 
 const [values, setValues] = useState({
   name:"",
   email: "",
   phone:"",
   password: "",
+  role:""
 })
 const [errors, setErrors] = useState({})
 
-const handleChange = (e)=>{
+const handleChange = (e)=> {
   const {name, value} = e.target;
   setValues ({...values,[name]: value})
-}
+};
+
 const handleSubmit = async(e)=> {
 e.preventDefault ();
+const formData = {...values, role};
 const validationErrors = {}
 const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 if (!values.name.trim()) {
@@ -44,17 +48,23 @@ if(!values.password.trim()){
 }
 
 setErrors(validationErrors)
-if(Object.keys(validationErrors).length === 0) {
-  alert('Registration successfully')
-  axios.post("http://localhost:2001/api/v1/signup", values)
+if(Object.keys(validationErrors).length === 0 ) {
+  axios.post("http://localhost:2001/api/v1/signup", formData)
     .then((response) => {
-      console.log(response);
+      console.log('Registration response:', response);
+      if(response.status === 201){
+      alert('Registered successfully');
+      navigate('/');
+      }
     }).catch(function (error) {
-      console.log(error);
+      console.log('Registration error:', error.response);
+      if(error.response.status === 401 ){
+        alert('User already exists! login for the role')
+      }else{
+        alert('Already assigned one role');
+      }
     });
- navigate('/')
-  }
-}
+}}
 
   return (
     <>
@@ -69,7 +79,11 @@ if(Object.keys(validationErrors).length === 0) {
             <h2>Registration Page</h2>
               <div className="login_field1">
               <div className="inputLabel ">
-          
+                <h3>Select an option</h3>
+          <select name='role' defaultValue={'formData.role'} onChange={(e)=> setRole(e.target.value)}>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select><br/>
               <div><input type="text" onChange={handleChange} className="inputlabel" name="name"
               value={values.name} placeholder="Enter Full name." />
               <br/>{errors.username && (<span className='error'>{errors.username}</span>)}

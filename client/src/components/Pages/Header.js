@@ -6,14 +6,17 @@ import './Header.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import helpdeskImg from '../Pages/helpdesk_img.png'
 
-const Header = (props) => {
-  const [profileName,setProfileName] =  useState("")
+const Header = () => {
+  const [profileName, setProfileName] =  useState("");
+  
   useEffect(()=>{
-    let data = JSON.parse(localStorage.getItem("loginResponseDate"));
-     setProfileName(data.loginData.name) 
+    let data = sessionStorage.getItem( 'email' );
+      setProfileName(data);
     },[]);
+    
   return (
     <>
+  
    <div className='header'>
    <div className='dashbordLink'>
     <img src={helpdeskImg} alt="Help Desk"  className='logo-helpdesk'/>

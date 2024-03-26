@@ -8,6 +8,8 @@ import '../Pages/Header.css';
 const PreviewRecords = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  // const role = sessionStorage.getItem(('role'));
+  
 
   return (
   <>
@@ -25,14 +27,16 @@ const PreviewRecords = () => {
     <p><span className='prev-title'>Location:</span><span className='prev-data'>{location.state.location}</span></p><hr/>
     <p><span className='prev-title'>Bank:</span><span className='prev-data'>{location.state.bankName}</span></p><hr/>
     <p><span className='prev-title'>Category:</span><span className='prev-data'>{location.state.category}</span></p><hr/>
-    <p><span className='prev-title'>Assign-To:</span><span className='prev-data'>{location.state.subCategory}</span></p>
+    <p><span className='prev-title'>Assign-To:</span><span className='prev-data'>{location.state.subCategory}</span></p><hr/>
+    <p><span className='prev-title'>Status:</span><span className='prev-data'>{location.state.status}</span></p>
     </div>
     <div className="back-btn">
     <button onClick={()=>navigate('/allTicket')}>Back</button>
+   
     </div>
     </div>
-    
    </div>
+   
  
     </>
   );

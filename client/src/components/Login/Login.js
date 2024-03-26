@@ -7,10 +7,13 @@ import axios from "axios";
 const Login = () => {
 
   const navigate = useNavigate();
+  const [role, setRole] = useState('user');
 
   const [formData, setFormData] = useState({
+    name:"",
     email: "",
     password: "",
+    role:""
   })
 
   const [errors, setErrors] = useState({});
@@ -20,15 +23,12 @@ const Login = () => {
     setFormData({...formData,[name]: value})
   }
 
-  // const savedata= async()=>{
-  //   console.log("user dat is--", formData);
-  //   console.log("savedata");
-  // }
-
  const handleSubmit =async(e)=>{
   e.preventDefault();
+  const userRole = {...formData, role};
   const validationErrors= {}
   const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
   if(!formData.email.trim()){
     validationErrors.email ="Enter your email"
   }else if(!email_pattern.test(formData.email)){
@@ -44,17 +44,30 @@ const Login = () => {
 
   setErrors(validationErrors)
   if(Object.keys(validationErrors).length===0){
-     try {
-      const res = await axios.post(`http://localhost:2001/api/v2/signin`,formData );
-      console.log(res.data, 'resdata');
-      localStorage.setItem("loginResponseDate",JSON.stringify(res.data));
-    }catch (error) {
-      console.error("Error saving data:", error);
-    }
-    alert("Login Successfully");
-    navigate("/dashboard");
-  }
+    axios.post("http://localhost:2001/api/v2/signin", userRole)
+    .then((response) => {
+      localStorage.setItem("loginResponseDate",JSON.stringify(response.data));
+      // sessionStorage.setItem('token', 'auth-key');
+      sessionStorage.setItem('role', role);
+      sessionStorage.setItem('email', formData.email);
+
+      console.log(response);
+      if(response.status === 200){
+      alert('Login successfully');
+      navigate('/dashboard');
+      }
+    }).catch(function (error) {
+      console.log(error.response);
+      if(error.response.status === 401 ){
+        alert('user not found')
+      }else{
+        alert('Internal arror');
+      }
+    });
+   }
  }
+
+
   return (
     <>
       <div className="container">
@@ -66,6 +79,11 @@ const Login = () => {
             <form className="input_form" onSubmit={handleSubmit}>
             <h2>Login Page</h2>
               <div className="login_field">
+              <p>Select an option:</p>
+                <select name="role" value={role} onChange={(e)=>setRole(e.target.value)}>
+                  <option value="user">User</option>
+                  <option value="admin">Admin</option>
+                </select>
               <div className="inputLabel ">
               <div ><label className="labelField1">Username/Email:</label></div>
               <div><input type="text" onChange={inputChange} className="inputlabel" name="email"
@@ -80,7 +98,7 @@ const Login = () => {
               <br/>{errors.password && (<span className="error">{errors.password}</span>)}
               </div>
               </div>
-              <button className="inputlabel submit-btn">Submit</button>
+              <button type="submit" className="inputlabel submit-btn">Submit</button>
               </div>
               <div className="bottom-link">
               <div><Link className="forgotPass" style={{color:"blueviolet"}}>Forgot/Reset Password</Link></div>
@@ -94,5 +112,5 @@ const Login = () => {
     </>
   );
 };
-
+// localStorage.setItem("loginResponseDate",JSON.stringify(res.data));
 export default Login;

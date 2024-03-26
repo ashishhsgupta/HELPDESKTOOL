@@ -1,12 +1,22 @@
 import React from 'react'
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import '../Pages/Header.css';
 
 
 
 const Sidebar = () =>{
+  const navigate = useNavigate();
+  const location = useLocation();
+  const role = sessionStorage.getItem('role');
 
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('role');
+    navigate('/login');
+  };
+ 
   return (
    <>
       <div className='sidebar'>
@@ -14,8 +24,9 @@ const Sidebar = () =>{
           <i className="bi-person-circle me-2" style={{fontSize:'25px'}}></i>
           <span className=''>Profile</span>
         </Link> */}
+         <p>Role: {role}</p>
         <ul className='nav'>
-          <li className='active'>
+          <li className={location.pathname === '/dashboard' ? 'active' : ''}>
           <Link to="/dashboard" className='linkList'>
             <div className='liList ' >
               <i className='bi bi-speedometer'></i>
@@ -23,68 +34,73 @@ const Sidebar = () =>{
             </div>
           </Link>
           </li>
+          {role === 'user' && (
           <li>
           <Link to="/createTicket" className='linkList'>
-            <li className='liList'>
+            <div className='liList'>
               <i className="bi-telephone-plus me-2"></i>
               <span className='pageName'>Raise a ticket +</span>
-            </li>
+            </div>
           </Link>
           </li>
+          )} 
           <li>
           <Link to="/allTicket" className='linkList'>
-            <li className='liList'>
+            <div className='liList'>
               <i className="bi-basket3-fill me-2"></i>
               <span className='pageName'>All Ticket</span>
-            </li>
+            </div>
           </Link>
           </li>
+            {role === 'user' && (
           <li>
           <Link to="/reopen" className='linkList'>
-            <li className='liList'>
+            <div className='liList'>
               <i className="bi-person-check me-2"></i>
               <span className='pageName'>Reopen Ticket</span>
-            </li>
+            </div>
           </Link>
           </li>
+          )}
           <li>
           <Link to="/pendingTicket" className='linkList'>
-            <li className='liList'>
+            <div className='liList'>
               <i className="bi-hand-index me-2"></i>
               <span className='pageName'>Pending</span>
-            </li>
+            </div>
           </Link>
           </li>
           <li>
           {/* <Link to="/progress" className='linkList'>
-            <li className='liList'>
+            <div className='liList'>
               <i className="bi bi-aspect-ratio me-2"></i>
               <span className='pageName'>WIP</span>
-            </li>
+            </div>
           </Link> */}
           </li>
           <li>
           <Link to="/resolved" className='linkList'>
-            <li className='liList'>
+            <div className='liList'>
               <i className="bi-journal-check me-2"></i>
               <span className='pageName'>Resolved</span>
-            </li>
+            </div>
           </Link>
           </li>
           <li>
-          <Link to="/report" className='linkList'>
-            <li className='liList'>
+          <Link to="/generateReport" className='linkList'>
+            <div className='liList'>
               <i className="bi-table me-2"></i>
               <span className='pageName'>Report</span>
-            </li>
+            </div>
           </Link>
           </li>
           <li>
-          <Link to="/logout" className='linkList'>
-            <li className='liList'>
+          <Link className='linkList'>
+            <div className='liList'>
               <i className="bi-box-arrow-right me-2"></i>
-              <span className='pageName'>Logout</span>
-            </li>
+              {/* <span className='pageName'>Logout</span> */}
+              <button onClick={handleLogout} className='pageName'>Logout</button>
+            </div>
           </Link>
           </li>
         </ul>

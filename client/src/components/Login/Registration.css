@@ -58,10 +58,9 @@ form>h2{
     margin-top: 10px;
 line-height: 3;
 }
-.login_field1> .labelPass{
+/* .login_field1> .labelPass{
     margin-top: 20px;
-    
-}
+} */
 .inputlabel{
     width: 280px;
     /* height: 45px; */

@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv" 
 dotenv.config({path: "./config/config.env"});
 
+
 mongoose.connect(process.env.MONGO_URL)
 .then(()=>{
     console.log('connected to the database');
@@ -21,8 +22,11 @@ const signupSchema = new mongoose.Schema({
         type:Number,required:true 
     },
     password:{
-        type:String,required:true,minlength:6,maxlength:10  
+        type:String,required:true,minlength:60,maxlength:60  
     },
+    role:{
+        type: String, enum: ['user', 'admin']
+    }
 });
 const  usermodel = mongoose.model('mujRegistration', signupSchema);
 

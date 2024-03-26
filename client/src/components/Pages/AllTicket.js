@@ -54,7 +54,6 @@ const AllTicket = ({data}) => {
      const numbers = [...Array(npage + 1).keys()].slice(1);
   
 const handlePreview = (prewData) =>{
-  //console.log(prewData,"prewData")
   navigate('/preview',{state:prewData});
 }
 const handleUpdate = (updateData) =>{
@@ -91,7 +90,9 @@ const handleModelDelete = (modelValue) =>{
     <div className='allTicket-header'>
     <div className='allTicket-subHeader'>
 
-    <div><Header/></div>
+    <div>
+      <Header/>
+      </div>
   
     </div>
     <div className='allTicket-flex'>
@@ -100,7 +101,7 @@ const handleModelDelete = (modelValue) =>{
     </div>
     <div className='table-head'>
       <div className='search-box'>
-      <div><h4>Total count:{userCount}</h4></div>
+      <div><h4>Total Ticket Counts : {userCount}</h4></div>
       <SearchFilter users={users} setUsers={setUsers} users2={users2} handleSearch={handleSearch}/>
       </div>
         <table className='customers'>

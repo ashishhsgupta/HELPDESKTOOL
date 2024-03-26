@@ -30,6 +30,13 @@
   display: flex;
   align-items: center;
 }
+.sidebar p{
+  margin-left: 67px;
+    font-size: 16px;
+    font-family: auto;
+    font-weight: bolder;
+    padding-top: 15px;
+}
 .liList i {
   font-size: 32px;
   padding-left: 20px;
@@ -138,12 +145,11 @@
 }
 .dashboard-welcome{
   color: rgb(245, 52, 52);
-  padding: 20px;
-  font-size: 10px;
-  /* line-height: 1.6; */
+  padding: 10px;
 }
 .dashboard-welcome h3{
   color: #424443;
+  font-size: 20px;
 }
 
 .marquee{
@@ -537,4 +543,71 @@ span.prev-data{
 .bar-chart{
     margin-left: 40px;
 }
-
+.updateRecord-option select{
+  width: 17.4rem;
+    height: 2.7rem;
+    border-radius: 5px;
+    padding-left: 10px;
+    background: rgb(237, 231, 231);
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid gray;
+    outline: none;
+}
+.container-report{
+  display: flex;
+  background-image: url('./headimg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-position: center; */
+    height: 100vh;
+}
+.report-selection{
+  display: flex;
+  column-gap: 9rem;
+  height: 7rem;
+    align-items: center;
+    background-color: #ffffff;
+}
+#dropdowm-list{
+  width: 15rem;
+    height: 2rem;
+    border-radius: 5px;
+    background: rgb(238, 240, 246);
+    color: black;
+    overflow: hidden;
+}
+.container-report-btn{
+  margin: 25px 0px 0px 40px;
+ 
+}
+.report-level{
+  font-weight: bolder;
+}
+.report-download-btn{
+   text-align: right;
+   height: 4.5rem;
+   background: #fff;
+}
+.report-download-btn>button{
+  width: 15rem;
+    height: 2rem;
+    border-radius: 5px;
+    background: rgb(63, 143, 105);
+    text-decoration: none;
+    overflow: hidden;
+    color: white;
+    border: none;
+    margin: 20px;
+}
+.report-download-btn>button:hover{
+  background-color: #029e82;
+  box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px, rgb(0 0 0 / 30%) 0px 8px 16px -8px;
+}
+#status-report-list{
+  margin-left: 20px;
+}
+div#bank-report-list{
+  margin-right: 20px;
+}

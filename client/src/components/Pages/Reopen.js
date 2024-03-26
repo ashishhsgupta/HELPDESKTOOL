@@ -5,7 +5,7 @@ const Reopen = () => {
   return (
     <>
     <SearchFilter />
-      <h2>This is my  ticket</h2>
+      <h2>This is my  reopen ticket</h2>
     </>
   )
 }
