@@ -77,14 +77,14 @@ const Login = () => {
           </div>
           <div className="login_container">
             <form className="input_form" onSubmit={handleSubmit}>
-            <h2>Login Page</h2>
+            <h4>Login Page</h4>
               <div className="login_field">
-              <p>Select an option:</p>
+              <h5>Select an option</h5>
                 <select name="role" value={role} onChange={(e)=>setRole(e.target.value)}>
                   <option value="user">User</option>
                   <option value="admin">Admin</option>
                 </select>
-              <div className="inputLabel ">
+              <div className="inputLabel-email ">
               <div ><label className="labelField1">Username/Email:</label></div>
               <div><input type="text" onChange={inputChange} className="inputlabel" name="email"
               value={formData.email} placeholder="Enter email id." />
@@ -102,7 +102,7 @@ const Login = () => {
               </div>
               <div className="bottom-link">
               <div><Link className="forgotPass" style={{color:"blueviolet"}}>Forgot/Reset Password</Link></div>
-              <div><Link to='/registration' className="signup">If don't have an account ? Create account</Link></div>
+              <div><Link to='/registration' className="signup">If not registered? click and Sign Up.</Link></div>
               </div>  
             </form>
            
