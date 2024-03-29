@@ -73,7 +73,7 @@ const editor = useRef(null);
       <div><Sidebar/></div>
       
       <div className='app-records'>
-      <h2>Update Records</h2><hr/>
+      <h4>Update Records</h4><hr/>
       <div className='form_container'>
       <label htmlFor="name">Requester Name:</label><br/>
       <input

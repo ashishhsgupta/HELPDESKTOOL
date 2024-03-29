@@ -36,12 +36,13 @@ const GenerateReport = () => {
     <Sidebar />
     </div>
     <div className='container-report-btn'>
-    <h2>My Reports</h2>
+    <h4>My Reports</h4>
     <div className='report-selection'>
     <div id='status-report-list'>
         <label className='report-level'>Report Type</label><br/>
         <select name="type" id="dropdowm-list" >
             <option value="disabled">Category</option>
+            <option>All</option>
             <option>Progress</option>
             <option>Pending</option>
             <option>Resolved</option>

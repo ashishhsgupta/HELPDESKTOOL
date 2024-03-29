@@ -101,7 +101,7 @@ const handleModelDelete = (modelValue) =>{
     </div>
     <div className='table-head'>
       <div className='search-box'>
-      <div><h4>Total Progress Tickets : {userCount}</h4></div>
+      <div><h5>Total Progress Tickets : {userCount}</h5></div>
       <SearchFilter users={users} setUsers={setUsers} users2={users2} handleSearch={handleSearch}/>
       </div>
         <table className='customers'>

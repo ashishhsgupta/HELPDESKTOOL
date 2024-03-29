@@ -27,25 +27,6 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
-// app.get('/data',(req, res) => {
-//     res.send("I am in the route");
-// })
-// app.get('/downloadReport', async(req, res)=> {
-//     try{
-//        const workbook = new ExcelJS.Workbook();
-//        const worksheet = workbook.addWorksheet('Report');
-//        worksheet.addRow([ 'Name','Email','Phone Number']);
-//        worksheet.addRow(['ashish','a@gmail.com',983456789]);
-//        const filePath =  './temp/report.xlsx';
-//         await workbook.xlsx.writeFile(filePath);
-//         res.download(filePath, 'report.xlsx',(err)=>{
-//             fs.unlinkSync(filePath);
-//         });
-//     }catch(error){
-//         console.error('Error generating report:', error);
-//         res.status(500).send('Internal server error');
-//     }
-// });
 
 app.use('/',routers);
 

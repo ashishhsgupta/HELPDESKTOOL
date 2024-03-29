@@ -4,7 +4,6 @@
 
 .allTicket-flex{
     display: flex;
-    height: 100vh!important;
   } 
   .nav-page{
     background-color:#E59866;
@@ -71,8 +70,7 @@
     padding: 8px;
   }
   li.page-item.active .page-link{
-    background-color: rgb(192, 152, 134);
+    background-color: rgb(156, 151, 247);
     border: 0;
     color:#fff;
-
   }
