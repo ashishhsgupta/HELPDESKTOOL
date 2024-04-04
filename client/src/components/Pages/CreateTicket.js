@@ -58,30 +58,30 @@ const CreateTicket = () => {
     const validationErrors = {};
     const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.name.trim()) {
-      validationErrors.name = "*";
+      validationErrors.name = "**";
     }
     if (!formData.email.trim()) {
-      validationErrors.email = "*";
+      validationErrors.email = "**";
     } else if (!email_pattern.test(formData.email)) {
       validationErrors.email = "*Please enter a valid Email address!";
     }
     if (!formData.department.trim()) {
-      validationErrors.department = "*";
+      validationErrors.department = "**";
     }
     if (!formData.subject.trim()) {
-      validationErrors.subject = "*";
+      validationErrors.subject = "**";
     }
     if (!formData.location.trim()) {
-      validationErrors.location = "*";
+      validationErrors.location = "**";
     }
     if (!formData.bankName.trim()) {
-      validationErrors.bankName = "*";
+      validationErrors.bankName = "**";
     }
     if (!formData.category.trim()) {
-      validationErrors.category = "*";
+      validationErrors.category = "**";
     }
     if (!formData.subCategory.trim()) {
-      validationErrors.subCategory = "*";
+      validationErrors.subCategory = "**";
     }
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length === 0) {

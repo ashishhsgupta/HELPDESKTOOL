@@ -7,13 +7,11 @@ import axios from "axios";
 const Login = () => {
 
   const navigate = useNavigate();
-  const [role, setRole] = useState('user');
+  // const [role, setRole] = useState([]);
 
   const [formData, setFormData] = useState({
-    name:"",
     email: "",
     password: "",
-    role:""
   })
 
   const [errors, setErrors] = useState({});
@@ -25,7 +23,7 @@ const Login = () => {
 
  const handleSubmit =async(e)=>{
   e.preventDefault();
-  const userRole = {...formData, role};
+  // const userRole = {...formData, role};
   const validationErrors= {}
   const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -42,16 +40,21 @@ const Login = () => {
     validationErrors.password="Password should not exceed 10 characters"
   }
 
-  setErrors(validationErrors)
+  setErrors(validationErrors);
   if(Object.keys(validationErrors).length===0){
-    axios.post("http://localhost:2001/api/v2/signin", userRole)
+    axios.post("http://localhost:2001/api/v2/signin", formData)
     .then((response) => {
       localStorage.setItem("loginResponseDate",JSON.stringify(response.data));
-      // sessionStorage.setItem('token', 'auth-key');
-      sessionStorage.setItem('role', role);
       sessionStorage.setItem('email', formData.email);
+      const name = response.data.name;
+      sessionStorage.setItem('name',name);
 
+       const userRole = response.data.role;
+       sessionStorage.setItem('role', userRole);
+
+       
       console.log(response);
+
       if(response.status === 200){
       alert('Login successfully');
       navigate('/dashboard');
@@ -79,11 +82,11 @@ const Login = () => {
             <form className="input_form" onSubmit={handleSubmit}>
             <h4>Login Page</h4>
               <div className="login_field">
-              <h5>Select an option</h5>
-                <select name="role" value={role} onChange={(e)=>setRole(e.target.value)}>
+              <h5>Login from User/Admin as registered</h5>
+                {/* <select name="role" value={role} onChange={(e)=>setRole(e.target.value)}>
                   <option value="user">User</option>
                   <option value="admin">Admin</option>
-                </select>
+                </select> */}
               <div className="inputLabel-email ">
               <div ><label className="labelField1">Username/Email:</label></div>
               <div><input type="text" onChange={inputChange} className="inputlabel" name="email"

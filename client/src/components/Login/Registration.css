@@ -23,7 +23,7 @@
     
 }
 .sub_container{
-    width: 100%;
+    width: 90%;
     background-color: white;
     display: flex;
     border-radius: 5px;
@@ -48,6 +48,9 @@ form{
 .inputLabel>h5{
     color: red;
     line-height: 1;
+}
+.login_field>h5{
+    font-size: 15px;
 }
 .login_field1{
 line-height: 3;

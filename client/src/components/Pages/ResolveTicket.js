@@ -57,10 +57,10 @@ const [resolvedTicket, setResolvedTicket]= useState([]);
 const handlePreview = (prewData) =>{
   navigate('/preview',{state:prewData});
 }
-const handleUpdate = (updateData) =>{
-  console.log(updateData,"update")
-  navigate('/updateRecord',{state:updateData})
-}
+// const handleUpdate = (updateData) =>{
+//   console.log(updateData,"update")
+//   navigate('/updateRecord',{state:updateData})
+// }
 
   const [show, setShow] = useState({});
   const [modalValue, setModalValue] = useState({});

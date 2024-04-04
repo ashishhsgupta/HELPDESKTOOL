@@ -15,28 +15,28 @@ const Sidebar = () =>{
   const handleLogout = () => {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('role');
-    navigate('/login');
+    navigate('/');
   };
  
   const handleClick =(link)=>{
-    if(activeLink !== link){
+    if(activeLink!== link){
     setActiveLink(link);
     }
   }
   return (
    <>
       <div className='sidebar'>
-        {/* <Link className='profile'>
-          <i className="bi-person-circle me-2" style={{fontSize:'25px'}}></i>
-          <span className=''>Profile</span>
-        </Link> */}
-         <p>Role: {role}</p>
+        <Link className='profile'>
+          <i className="bi-person-circle me-2" style={{fontSize:'30px'}}></i>
+          <span className='' style={{marginLeft:'10px'}}> Role : {role}</span>
+        </Link>
+         {/* <p>Role: {role}</p> */}
         <ul className='nav'>
           <li className={location.pathname === '/dashboard' ? 'active' : ''}>
           <Link to="/dashboard" className='linkList'>
             <div className='liList ' >
               <i className='bi bi-speedometer'></i>
-              <span className='pageName'>Dashboard</span>
+              <span className='pageName' style={{marginLeft:'15px'}}>Dashboard</span>
             </div>
           </Link>
           </li>
@@ -107,13 +107,10 @@ const Sidebar = () =>{
           </Link>
           </li>
           <li>
-          <Link className='linkList'>
             <div className='liList'>
               <i className="bi-box-arrow-right me-2"></i>
-              {/* <span className='pageName'>Logout</span> */}
               <button onClick={handleLogout} className='pageName'>Logout</button>
             </div>
-          </Link>
           </li>
         </ul>
       </div>

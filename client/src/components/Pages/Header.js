@@ -1,18 +1,12 @@
-//import React from 'react'
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import { Link } from "react-router-dom";
-//import axios from 'axios';
 import './Header.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import helpdeskImg from '../Pages/helpdesk_img.png'
 
 const Header = () => {
-  const [profileName, setProfileName] =  useState("");
-  
-  useEffect(()=>{
-    let data = sessionStorage.getItem( 'email' );
-      setProfileName(data);
-    },[]);
+
+const userEmail = sessionStorage.getItem('email');
     
   return (
     <>
@@ -27,7 +21,8 @@ const Header = () => {
    <Link className='header-link'>
           <i className="bi-person-circle me-2" style={{fontSize:'25px'}}></i>
           <span>Welcome</span><br/>
-          <span className=''>{profileName}</span>
+          <span>{userEmail}</span>
+      
         </Link>
 
 </div>
