@@ -30,7 +30,6 @@ const Sidebar = () =>{
           <i className="bi-person-circle me-2" style={{fontSize:'30px'}}></i>
           <span className='' style={{marginLeft:'10px'}}> Role : {role}</span>
         </Link>
-         {/* <p>Role: {role}</p> */}
         <ul className='nav'>
           <li className={location.pathname === '/dashboard' ? 'active' : ''}>
           <Link to="/dashboard" className='linkList'>

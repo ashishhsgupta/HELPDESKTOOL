@@ -57,11 +57,6 @@ const [resolvedTicket, setResolvedTicket]= useState([]);
 const handlePreview = (prewData) =>{
   navigate('/preview',{state:prewData});
 }
-// const handleUpdate = (updateData) =>{
-//   console.log(updateData,"update")
-//   navigate('/updateRecord',{state:updateData})
-// }
-
   const [show, setShow] = useState({});
   const [modalValue, setModalValue] = useState({});
   const [viewUserIndex, setViewUserIndex] = useState();
@@ -118,7 +113,7 @@ const handleModelDelete = (modelValue) =>{
           </thead>
           <tbody>
             {
-             resolvedTicket.map((user, index ) => (
+             records.map((user, index ) => (
               <tr key={user._id}>
                 <td className='sr-no'>{index+1+(currentPage-1)*recordsPerPage}</td>
                 <td>{user.ticketNumber}</td>

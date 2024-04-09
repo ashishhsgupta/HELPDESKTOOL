@@ -118,7 +118,7 @@ const handleModelDelete = (modelValue) =>{
           </thead>
           <tbody>
             {
-             progressTicket.map((user, index ) => (
+             records.map((user, index ) => (
               <tr key={user._id}>
                 <td className='sr-no'>{index+1+(currentPage-1)*recordsPerPage}</td>
                 <td>{user.ticketNumber}</td>

@@ -81,7 +81,7 @@ const editor = useRef(null);
               type="text"
               value={userValue.name}
               onChange={handleValueChange} maxLength={20} 
-              readOnly={role === 'admin'}
+               readOnly={role === 'admin'}
             /><br/><br/>
       <label htmlFor="email">Email:</label><br/>
       <input

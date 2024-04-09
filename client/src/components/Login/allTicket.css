@@ -74,3 +74,8 @@
     border: 0;
     color:#fff;
   }
+  .charts-status{
+    display: flex;
+    justify-content: center;
+  }
+  

@@ -12,6 +12,8 @@ import PreviewRecords from './components/Pages/PreviewRecords';
 import UpdateRecords from './components/Pages/UpdateRecords';
 import GenerateReport from "./components/Pages/GenerateReport";
 import ResolveTicket from "./components/Pages/ResolveTicket";
+import Barchart from "./components/Pages/Barchart";
+
 
 
 
@@ -35,6 +37,7 @@ function App() {
         <Route path='/updateRecord' element={<UpdateRecords/>}/>
         <Route path='generateReport' element={<GenerateReport />} />
         <Route path='resolvedTicket' element={<ResolveTicket/>}/>
+        <Route path='barchart' element={<Barchart/>}/>
 
     </Routes>
     </>

@@ -71,19 +71,13 @@ export const postUserData = async(req, res)=>{
     try{
         console.log('req.body',req.body)
         let userData = new  userDataModel(req.body); 
-        const {email} = userData;
-        const userEmail = await userDataModel.findOne({email});
         const ticketNumber = Math.floor(Math.random() * 1000);
         if(ticketNumber){
             userData["ticketNumber"] = +ticketNumber
         }
         userData["status"] = "Pending"
-        if(userEmail){
-            console.log('data fetched');
-            return res.status(401).json('data already exists');
-        }
        const savedUser = await userData.save();
-       return res.status(201).json('ticket created successfully');
+       res.status(201).json({ticketNumber});
     }catch(error){
         res.status(500).json({ error: error.message});
         console.log(error);
@@ -186,3 +180,15 @@ export const progressTickets =async(req, res)=> {
       res.status(500).json({error: 'Internal server error'});
     };
     }
+    
+ export const chartStatusCount = async(req, res) => {
+   try{
+      const pendingCount = await userDataModel.countDocuments({ status: 'Pending'});
+      const  resolvedCount = await userDataModel.countDocuments({ status: "Resolved" });
+      const progressCount = await userDataModel.countDocuments({ status : "Progress" });
+      res.json({ pendingCount, resolvedCount, progressCount});
+    }catch(error){
+      console.error(error);
+      res.status(500).json({ error: "Internal server error"});
+    }
+ };

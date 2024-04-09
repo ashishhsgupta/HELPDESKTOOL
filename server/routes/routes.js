@@ -1,6 +1,6 @@
 import express from "express";
 import { usersignup, usersignin, ticketCount, postUserData, updateRecords, deleteRecord, generateReport,
-        pendingTickets, resolvedTickets, progressTickets} from "../userController/userController.js";
+        pendingTickets, resolvedTickets, progressTickets, chartStatusCount} from "../userController/userController.js";
 import { userDataModel } from "../model/userSchema.js";
 
 const router = express();
@@ -15,6 +15,7 @@ router.get('/api/report/downloadReport', generateReport);
 router.get('/api/ticket/pendingTicket', pendingTickets);
 router.get('/api/ticket/resolvedTicket', resolvedTickets);
 router.get('/api/ticket/progressTicket', progressTickets);
+router.get('/api/statusCount', chartStatusCount);
 
 router.get('/api/getUserdata', async (req, res)=> {
     try{
@@ -25,21 +26,6 @@ router.get('/api/getUserdata', async (req, res)=> {
         res.status(500).json({ message:'Internal server error'});
     }
 });
-
-router.post('/generateTicket', async (req, res) => {
-    const ticketNumber = Math.floor(Math.random() * 1000);
-     res.json({ ticketNumber });  
-});
-
-// router.get('/api/data/count', async (req, res) => {
-//     try {
-//       const count = await userDataModel.countDocuments();
-//       res.json({ count });
-//     } catch (err) {
-//       console.error(err);
-//       res.status(500).json({ error: 'Server Error' });
-//     }
-//   });
   
 
 

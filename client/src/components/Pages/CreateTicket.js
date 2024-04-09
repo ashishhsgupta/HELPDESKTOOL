@@ -13,7 +13,7 @@ const CreateTicket = () => {
   
   const navigate = useNavigate();
 
-  const [ticketNumber, setTicketNumber] = useState(null);
+  // const [ticketNumber, setTicketNumber] = useState(null);
   const [image, setImage] = useState(null);
   const [fileName, setFileName] = useState("No selected image");
   const editor = useRef(null);
@@ -35,15 +35,14 @@ const CreateTicket = () => {
   };
 
   const saveData = async () => {
-    console.log("form data is -- ", formData);
-    let apiPayload = formData;
-    if(ticketNumber){
-      apiPayload["ticketNumber"] = ticketNumber;
-    }
     try {
       const res = await axios.post(
-        'http://localhost:2001/api/v3/postData', apiPayload
+        'http://localhost:2001/api/v3/postData', formData
       );
+      const data = res.data;
+      console.log('---ticket:', data);
+      alert(`ticket created successfully ticket no.: ${data.ticketNumber}`);
+      navigate('/allTicket');
       console.log(res.data);
     } catch (error) {
       console.error("Error saving data:", error);
@@ -85,32 +84,10 @@ const CreateTicket = () => {
     }
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length === 0) {
-      setTicket(ticketNumber);
+      // setTicket(ticketNumber);
     }
   };
-
-  const setTicket = async () => {
-    try {
-      const response = await fetch("http://localhost:2001/generateTicket",  {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body:JSON.stringify(formData),
-      });
-      if (!response.ok) {
-        throw new Error("Failed to generate new ticket");
-      }
-      const data = await response.json();
-      console.log({ response });
-      setTicketNumber(data.ticketNumber);
-      alert(`Ticket created successfully.Ticket ID: ${data.ticketNumber}`);
-      // window.location.reload();
-      navigate("/allTicket");
-    } catch (error) {
-      console.error("Error:", error.message);
-    }
-  };
+  
   return (
     <>
     <div className="">

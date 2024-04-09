@@ -60,7 +60,7 @@ const Registration = () => {
         .catch(function (error) {
           console.log("Registration error:", error.response);
           if (error.response.status === 401) {
-            alert("User already exists! login for the role");
+            alert("User already exists! for a role");
           } else {
             alert("Already assigned one role");
           }
