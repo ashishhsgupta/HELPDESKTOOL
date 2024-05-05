@@ -11,7 +11,7 @@ import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 
 
-const ResolvedTicket = ({data}) => {
+const ResolvedTicket = ({data, role}) => {
   const navigate = useNavigate();
 
 const [resolvedTicket, setResolvedTicket]= useState([]);
@@ -57,6 +57,12 @@ const [resolvedTicket, setResolvedTicket]= useState([]);
 const handlePreview = (prewData) =>{
   navigate('/preview',{state:prewData});
 }
+
+const handleUpdate = (editData) =>{
+  console.log(editData,"update")
+  navigate('/editRecord',{state:editData})
+}
+
   const [show, setShow] = useState({});
   const [modalValue, setModalValue] = useState({});
   const [viewUserIndex, setViewUserIndex] = useState();
@@ -122,6 +128,7 @@ const handleModelDelete = (modelValue) =>{
                 <td>{user.subject}</td>
                 <td>{user.status}</td>
                 <td className='td-action1'onClick={() =>handlePreview(user)}>Preview</td>
+                <td className='td-action2' onClick={()=>handleUpdate(user)}>Update</td>
                 <td className='td-action3' onClick={()=>deleteData(user,index+1+ (currentPage - 1) * recordsPerPage)}>Delete</td>
               </tr>
 ))}

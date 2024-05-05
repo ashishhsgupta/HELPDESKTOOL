@@ -57,6 +57,7 @@ const [progressTicket, setProgressTicket]= useState([]);
 const handlePreview = (prewData) =>{
   navigate('/preview',{state:prewData});
 }
+
 const handleUpdate = (updateData) =>{
   console.log(updateData,"update")
   navigate('/updateRecord',{state:updateData})

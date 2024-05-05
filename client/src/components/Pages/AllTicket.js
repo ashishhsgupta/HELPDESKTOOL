@@ -11,10 +11,10 @@ import Table from 'react-bootstrap/Table';
 
 
 
-
-
 const AllTicket = ({data}) => {
   const navigate = useNavigate();
+  const role = sessionStorage.getItem('role');
+ console.log('role:',role);
 
   const [filteredData, setFilteredData] = useState(data);
    useEffect(()=>{
@@ -57,8 +57,12 @@ const handlePreview = (prewData) =>{
   navigate('/preview',{state:prewData});
 }
 const handleUpdate = (updateData) =>{
-  console.log(updateData,"update")
-  navigate('/updateRecord',{state:updateData})
+  console.log("current status:", updateData.status)
+  navigate('/updateRecord',{state:updateData});
+}
+const handleEdit = (editData) => {
+  console.log("current status:", editData.status)
+  navigate('/editRecord', {state:editData});
 }
 
   const [show, setShow] = useState({});
@@ -116,6 +120,24 @@ const handleModelDelete = (modelValue) =>{
               <th scope="col" colSpan={3} className="colspan-action" style={{textAlign:'center'}}>Action</th>      
             </tr>
           </thead>
+          {role === 'user' ? (
+            <tbody>
+              {
+                records.map((user, index)=>(
+                  <tr key={user._id}>
+                 <td className='sr-no'>{index + 1 + (currentPage - 1) * recordsPerPage}</td>
+                 <td>{user.ticketNumber}</td>
+                 <td>{user.name}</td>
+                 <td>{user.email}</td>
+                 <td>{user.subject}</td>
+                 <td>{user.status}</td>
+                 <td className='td-action2' onClick={()=> handleEdit(user)}>Edit</td>
+                 <td className='td-action1' onClick={()=> handlePreview(user)}>Preview</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          ):(
           <tbody>
             {
              records.map((user, index ) => (
@@ -126,16 +148,16 @@ const handleModelDelete = (modelValue) =>{
                 <td>{user.email}</td>
                 <td>{user.subject}</td>
                 <td>{user.status}</td>
-                <td className='td-action1'onClick={() =>handlePreview(user)}>Preview</td>
-                <td className='td-action2' onClick={()=>handleUpdate(user)}>Update</td>
-                <td className='td-action3' onClick={()=>deleteData(user,index+1+ (currentPage - 1) * recordsPerPage)}>Delete</td>
+                <td className='td-action1'onClick={() =>handlePreview(user)}>Preview</td>     
+               <td className='td-action2' onClick={()=>handleUpdate(user)}>Update</td>
+               <td className='td-action3' onClick={()=>deleteData(user,index+1+ (currentPage - 1) * recordsPerPage)}>Delete</td>
+                
               </tr>
-))}
+))}   
           </tbody>
+  )}
         </table>
     
-    
-
     <div className="nav-page">
           <div className="back-btn">
           </div>

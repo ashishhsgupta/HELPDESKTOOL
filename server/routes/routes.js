@@ -1,6 +1,6 @@
 import express from "express";
 import { usersignup, usersignin, ticketCount, postUserData, updateRecords, deleteRecord, generateReport,
-        pendingTickets, resolvedTickets, progressTickets, chartStatusCount} from "../userController/userController.js";
+        pendingTickets, resolvedTickets, reopenTickets, closedTickets, progressTickets, chartStatusCount} from "../userController/userController.js";
 import { userDataModel } from "../model/userSchema.js";
 
 const router = express();
@@ -14,6 +14,8 @@ router.get('/api/data/count', ticketCount);
 router.get('/api/report/downloadReport', generateReport);
 router.get('/api/ticket/pendingTicket', pendingTickets);
 router.get('/api/ticket/resolvedTicket', resolvedTickets);
+router.get('/api/ticket/reopenTicket', reopenTickets);
+router.get('/api/ticket/closedTicket', closedTickets);
 router.get('/api/ticket/progressTicket', progressTickets);
 router.get('/api/statusCount', chartStatusCount);
 

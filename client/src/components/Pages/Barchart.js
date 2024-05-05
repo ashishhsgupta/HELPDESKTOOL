@@ -17,14 +17,18 @@ const Barchart = () => {
     });
   }, []);
 
-  const { pendingCount, resolvedCount, progressCount} = ticketCounts;
+  const { pendingCount, resolvedCount, progressCount, reopenCount, closedCount} = ticketCounts;
   
   const data = [
     ["Status", ''],
     ['Pending', pendingCount || 0],
     ['Resolved', resolvedCount || 0],
-    ['Progress', progressCount || 0]
+    ['Progress', progressCount || 0],
+    ['Reopen', reopenCount || 0],
+    ['Closed', closedCount || 0],
   ];
+console.log('reopen:', reopenCount)
+console.log('closed:', closedCount)
 
   const options = {
     chart: {

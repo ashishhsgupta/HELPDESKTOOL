@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 const SearchFilter = ({...props}) => {
 const [searchQuery,setSearchQuery] = useState("")
-console.log(props,"ashish")
+// console.log(props,"ashish")
 
   const handlesearch = (e) => {
     if(e.target.value.length > 0){

@@ -11,10 +11,10 @@ import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 
 
-const PendingTicket = ({data}) => {
+const ReopenTicket = ({data, role}) => {
   const navigate = useNavigate();
 
-const [pendingTickets, setPendingTickets]= useState([]);
+const [reopenTicket, setReopenTicket]= useState([]);
   const [filteredData, setFilteredData] = useState(data);
    useEffect(()=>{
     setFilteredData(data);
@@ -33,9 +33,9 @@ const [pendingTickets, setPendingTickets]= useState([]);
   const [userCount, setUserCount] = useState(0);
 
       useEffect(()=> {
-        axios.get('http://localhost:2001/api/ticket/pendingTicket')
+        axios.get('http://localhost:2001/api/ticket/reopenTicket')
         .then(response =>{
-          setPendingTickets(response.data);
+          setReopenTicket(response.data);
          
           setUsers(response.data);
           setUsers2(response.data)
@@ -57,9 +57,10 @@ const [pendingTickets, setPendingTickets]= useState([]);
 const handlePreview = (prewData) =>{
   navigate('/preview',{state:prewData});
 }
+
 const handleUpdate = (updateData) =>{
-  console.log("current status:", updateData.status)
-  navigate('/updateRecord',{state:updateData});
+  console.log(updateData,"update")
+  navigate('/updateRecord',{state:updateData})
 }
 
   const [show, setShow] = useState({});
@@ -101,7 +102,7 @@ const handleModelDelete = (modelValue) =>{
     </div>
     <div className='table-head'>
       <div className='search-box'>
-      <div><h5>Total Pending Counts : {userCount}</h5></div>
+      <div><h5>Total Reopen Tickets : {userCount}</h5></div>
       <SearchFilter users={users} setUsers={setUsers} users2={users2} handleSearch={handleSearch}/>
       </div>
         <table className='customers'>
@@ -231,4 +232,4 @@ const handleModelDelete = (modelValue) =>{
    }
  }
 }
-export default PendingTicket
+export default ReopenTicket;

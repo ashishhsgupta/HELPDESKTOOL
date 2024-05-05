@@ -1,5 +1,5 @@
-//import React from 'react';
-import React from "react";
+import React from 'react';
+//import React, { useState } from "react";
 import { Routes, Route } from 'react-router-dom';
 import Login from './components/Login/Login';
 import Registration from './components/Login/Registration';
@@ -12,7 +12,9 @@ import PreviewRecords from './components/Pages/PreviewRecords';
 import UpdateRecords from './components/Pages/UpdateRecords';
 import GenerateReport from "./components/Pages/GenerateReport";
 import ResolveTicket from "./components/Pages/ResolveTicket";
-import Barchart from "./components/Pages/Barchart";
+import ReopenTicket from './components/Pages/ReopenTicket';
+import ClosedTicket from './components/Pages/ClosedTicket';
+import EditRecord from './components/Pages/EditRecord';
 
 
 
@@ -35,9 +37,12 @@ function App() {
         <Route path='/pendingTicket' element={<PendingTicket/>}/>
         <Route path='/preview' element={<PreviewRecords/>}/>
         <Route path='/updateRecord' element={<UpdateRecords/>}/>
+        <Route path='/editRecord' element={<EditRecord/>}/>
         <Route path='generateReport' element={<GenerateReport />} />
         <Route path='resolvedTicket' element={<ResolveTicket/>}/>
-        <Route path='barchart' element={<Barchart/>}/>
+        <Route path='reopenTicket' element={<ReopenTicket/>}/>
+        <Route path='closedTicket' element={<ClosedTicket/>}/>
+      
 
     </Routes>
     </>

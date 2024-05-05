@@ -51,7 +51,7 @@ const Login = () => {
 
        const userRole = response.data.role;
        sessionStorage.setItem('role', userRole);
-
+       console.log("User Role:", userRole);
        
       console.log(response);
 

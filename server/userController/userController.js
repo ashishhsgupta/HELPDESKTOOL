@@ -71,18 +71,38 @@ export const postUserData = async(req, res)=>{
     try{
         console.log('req.body',req.body)
         let userData = new  userDataModel(req.body); 
-        const ticketNumber = Math.floor(Math.random() * 1000);
-        if(ticketNumber){
-            userData["ticketNumber"] = +ticketNumber
-        }
-        userData["status"] = "Pending"
-       const savedUser = await userData.save();
-       res.status(201).json({ticketNumber});
-    }catch(error){
+        const lastTicket = await userDataModel.findOne({}, {}, {sort:{'createdAt': -1}});       
+     let lastTicketNumber = lastTicket ? parseInt(lastTicket.ticketNumber.replace(/[^\d]/g, '')): 0;
+
+if(isNaN(lastTicketNumber)){
+    lastTicketNumber = 0;
+}
+const nextTicketNumber = (++lastTicketNumber).toString().padStart(4, '0');
+const ticketPrefix = 'A';
+
+const ticketNumber = ticketPrefix + nextTicketNumber;
+userData["ticketNumber"] = ticketNumber;
+userData["status"] = "Pending";
+
+const savedUser = await userData.save();
+res.status(201).json({ ticketNumber});
+    } catch (error) {
         res.status(500).json({ error: error.message});
         console.log(error);
     }
-}
+};
+    //     const ticketNumber = Math.floor(Math.random() * 1000);
+    //     if(ticketNumber){
+    //         userData["ticketNumber"] = +ticketNumber
+    //     }
+    //     userData["status"] = "Pending"
+    //    const savedUser = await userData.save();
+    //    res.status(201).json({ticketNumber});
+    // }catch(error){
+    //     res.status(500).json({ error: error.message});
+    //     console.log(error);
+    // }
+//}
 
 export const updateRecords = async(request,res)=> {
     try{
@@ -91,6 +111,8 @@ export const updateRecords = async(request,res)=> {
        if(!userExist){
         return res.status(404).json({message:'user not found'});
        }
+       console.log(userExist,"userExist++")
+       //request.body["status"] = userExist["status"] || "";
        const updatedUser= await userDataModel.findByIdAndUpdate(id, request.body,{new: true})
        res.status(201).json(updatedUser);
 
@@ -186,9 +208,31 @@ export const progressTickets =async(req, res)=> {
       const pendingCount = await userDataModel.countDocuments({ status: 'Pending'});
       const  resolvedCount = await userDataModel.countDocuments({ status: "Resolved" });
       const progressCount = await userDataModel.countDocuments({ status : "Progress" });
-      res.json({ pendingCount, resolvedCount, progressCount});
+      const reopenCount = await userDataModel.countDocuments({ status : "Reopen"});
+      const closedCount = await userDataModel.countDocuments({ status:'Closed'});
+      res.json({ pendingCount, resolvedCount, progressCount, reopenCount, closedCount});
     }catch(error){
       console.error(error);
       res.status(500).json({ error: "Internal server error"});
     }
  };
+
+ export const reopenTickets =async(req, res)=> {
+    try{
+       const pendingTickets = await userDataModel.find({status: 'Reopen'});
+       res.status(200).json(pendingTickets);
+    }catch(error){
+      console.error('Error fetching pending tickets:', error);
+      res.status(500).json({error: 'Internal server error'});
+    };
+    }
+
+    export const closedTickets =async(req, res)=> {
+        try{
+           const pendingTickets = await userDataModel.find({status: 'Closed'});
+           res.status(200).json(pendingTickets);
+        }catch(error){
+          console.error('Error fetching pending tickets:', error);
+          res.status(500).json({error: 'Internal server error'});
+        };
+        }

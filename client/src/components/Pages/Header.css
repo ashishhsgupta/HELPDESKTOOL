@@ -547,9 +547,9 @@ span.prev-data{
   display: flex;
   flex-direction: column;
 }
-.bar-chart{
+/* .bar-chart{
     margin-left: 40px;
-}
+} */
 .updateRecord-option select{
   width: 17.4rem;
     height: 2.7rem;
