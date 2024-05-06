@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react';
 import axios from 'axios';
 import Sidebar from './Sidebar';
 import Header from './Header';
@@ -6,10 +7,29 @@ import './Header.css';
 
 
 const GenerateReport = () => {
+  const [selectedStatus, setSelecetdStatus] = useState('');
+  const [selectedState, setSelecetdState] = useState('');
+  const [selectedBank, setSelectedBank] = useState('');
+
     const handleDownload = async () => {
+      if(!selectedStatus || selectedStatus === 'disabled' || !selectedState || selectedState === 'disabled' || !selectedBank || selectedBank === 'disabled'){
+        alert('Please select an option for all dropdown!');
+        return;
+      }
         try {
           const response = await axios.get('http://localhost:2001/api/report/downloadReport', {
-        responseType: 'blob' });
+        responseType: 'blob',
+        params:{
+        status: selectedStatus !== "All" ? selectedStatus : undefined,
+        state: selectedState !== "All" ? selectedState : undefined,
+        bank: selectedBank !== "All" ? selectedBank : undefined
+      }
+     });
+    // const dataAvailable = response.data.dataAvailable;
+    // if(!dataAvailble){
+    //   alert('No data available for selected combination');
+    //   return;
+    // }
 
           console.log('ashish:',response );
           const blob = new Blob([response.data], {type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
@@ -40,38 +60,36 @@ const GenerateReport = () => {
     <div className='report-selection'>
     <div id='status-report-list'>
         <label className='report-level'>Report Type</label><br/>
-        <select name="type" id="dropdowm-list" >
-            <option value="disabled">Category</option>
+        <select name="type" id="dropdowm-list" value={selectedStatus} onChange={(e)=> setSelecetdStatus(e.target.value)}>
+            <option value="disabled" style={{color:"red"}}>Select Category</option>
             <option>All</option>
-            <option>Progress</option>
             <option>Pending</option>
+            <option>Progress</option>
             <option>Resolved</option>
+            <option>Reopen</option>
+            <option>Closed</option>
         </select>
     </div>
     <div>
         <label className='report-level'>State Wise</label><br/>
-        <select name="type" id="dropdowm-list" >
-            <option value="disabled">State</option>
+        <select name="type" id="dropdowm-list" value={selectedState} onChange={(e)=> setSelecetdState(e.target.value)}>
+            <option value="disabled" style={{color:"red"}}>Select State</option>
             <option>All</option>
-            <option>Assam</option>
-            <option>Gujarat</option>
-            <option>Maharashtra</option>
-            <option>Rajasthan</option>
+            <option>Delhi</option>
             <option>Uttar Pradesh</option>
             <option>Madhya Pradesh</option>
+            <option>Maharashtra</option>
+            <option>Rajasthan</option>
         </select>
     </div>
     <div id='bank-report-list'>
         <label className='report-level'>Bank Wise</label><br/>
-        <select name="type" id="dropdowm-list" >
-            <option value="disabled">Bank Name</option>
+        <select name="type" id="dropdowm-list" value={selectedBank} onChange={(e)=> setSelectedBank(e.target.value)} >
+            <option value="disabled" style={{color:"red"}}>Select Bank</option>
             <option>All</option>
-            <option>State Bank of India</option>
             <option>Bank of Baroda</option>
             <option>HDFC Bank</option>
             <option>Axis Bank</option>
-            <option>ICICI Bank</option>
-            <option>Kotak Mahindra Bank</option>
         </select>
     </div>
     </div><br/>

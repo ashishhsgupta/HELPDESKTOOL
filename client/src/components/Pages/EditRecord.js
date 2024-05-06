@@ -18,7 +18,7 @@ const editor = useRef(null);
   const [content, setcontent] = useState("");
 
   const [currentStatus, setCurrentStatus] = useState(location.state.status);
-  const [selectedStatus, setSelectedStatus] = useState(currentStatus);
+  const [selectedStatus, setSelectedStatus] = useState('');
 
   const [userValue, setUserValue] = useState({
     _id: location.state._id,
@@ -42,12 +42,21 @@ const editor = useRef(null);
   console.log('Current status:', currentStatus);
   console.log('Selected status:', selectedStatus);
 
-  if (selectedStatus === "Reopen" || selectedStatus === 'Closed') {
-    setCurrentStatus(selectedStatus);
+
+  if (
+    role === "user" &&
+    (selectedStatus === "disabled" || !selectedStatus)
+  ) {
+    alert("Please select the status");
+    return;
   }
 
+  // if (selectedStatus === "Reopen" || selectedStatus === 'Closed') {
+  //   setCurrentStatus(selectedStatus);
+  // }
+
   let userId = userValue._id;
-  axios.put(`http://localhost:2001/api/v4/updateRecords/${userId}`,  {...userValue, status:selectedStatus})
+  axios.put(`http://localhost:2001/api/v4/updateRecords/${userId}`,  {userValue, status:selectedStatus})
     .then((response) => {
       setCurrentStatus(selectedStatus);
       console.log('Updated current status:', selectedStatus);
@@ -125,8 +134,8 @@ console.log('Current Status', currentStatus);
 
  {(role === 'admin' || currentStatus === 'Pending' || currentStatus === 'Closed' ||
  currentStatus === 'Reopen' || currentStatus === 'Progress') ? null :( 
- <div>
-  <label htmlFor='status'>Status:</label>
+ <div className='reopen-list'>
+  <label htmlFor='status'>Select status:</label>
   <select value={selectedStatus} onChange={(e)=>{setSelectedStatus(e.target.value);
   console.log('Selected status:', e.target.value);}} required>
   <option value="">Select</option>

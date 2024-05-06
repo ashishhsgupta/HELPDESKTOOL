@@ -8,12 +8,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "./Header";
 
-
 const CreateTicket = () => {
-  
   const navigate = useNavigate();
 
-  // const [ticketNumber, setTicketNumber] = useState(null);
   const [image, setImage] = useState(null);
   const [fileName, setFileName] = useState("No selected image");
   const editor = useRef(null);
@@ -33,24 +30,6 @@ const CreateTicket = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
-  const saveData = async () => {
-    try {
-      const res = await axios.post(
-        'http://localhost:2001/api/v3/postData', formData
-      );
-      const data = res.data;
-      console.log('---ticket:', data);
-      alert(`ticket created successfully ticket no.: ${data.ticketNumber}`);
-      navigate('/allTicket');
-      console.log(res.data);
-    } catch (error) {
-      console.error("Error saving data:", error);
-    }
-    console.log("saveData");
-  };
-
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -82,17 +61,47 @@ const CreateTicket = () => {
     if (!formData.subCategory.trim()) {
       validationErrors.subCategory = "**";
     }
+
+    if (
+      formData.location === "formData.location" ||
+      formData.bankName === "formData.bankName" ||
+      formData.category === "formData.category" ||
+      formData.subCategory === "formData.subCategory"
+    ) {
+      validationErrors.selectDropdowns =
+        "Please select an option for all dropdown";
+    }
+
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length === 0) {
-      // setTicket(ticketNumber);
+      try {
+        const res = await axios.post(
+          "http://localhost:2001/api/v3/postData",
+          formData
+        );
+        const data = res.data;
+        console.log("---ticket:", data);
+        alert(`ticket created successfully ticket no.: ${data.ticketNumber}`);
+        navigate("/allTicket");
+        console.log(res.data);
+      } catch (error) {
+        console.error("Error saving data:", error);
+      }
+    } else {
+      const confirmation = window.confirm(
+        "Please fill out all required fields!"
+      );
+      if (!confirmation) {
+        setErrors({});
+      }
     }
   };
-  
+
   return (
     <>
-    <div className="">
-      <Header/>
-    </div>
+      <div className="">
+        <Header />
+      </div>
       <div className="ticket-container">
         <div className="">
           <Sidebar />
@@ -180,54 +189,62 @@ const CreateTicket = () => {
                   />
                 </div>
                 <br />
-                <label htmlFor="location">Location:</label>
+                <label htmlFor="category">Location:</label>
                 {errors.location && (
                   <span className="inputError">{errors.location}</span>
                 )}
-                <br />
-                <input
-                  type="text"
-                  name="location"
-                  id="location"
+                <select
+                  defaultValue={"formData.location"}
+                  id="bankName"
+                  className="custom-select"
                   onChange={inputChange}
-                  className="title"
-                  placeholder="Write here bank location"
-                  value={formData.location}
-                />
+                  name="location"
+                  required
+                >
+                  <option disabled className="title" value="formData.location">
+                    Choose the location...
+                  </option>
+                  <option>Delhi</option>
+                  <option>Uttar pradesh</option>
+                  <option>Madhya pradesh</option>
+                  <option>Maharashtra</option>
+                  <option>Rajashthan</option>
+                </select>
                 <br />
                 <br />
-                <label htmlFor="bankName">Bank details</label>
+
+                <label htmlFor="category">Bank Name:</label>
                 {errors.bankName && (
                   <span className="inputError">{errors.bankName}</span>
-                )}{" "}
-                <br />
-                <input
-                  type="text"
-                  name="bankName"
+                )}
+                <select
+                  defaultValue={"formData.bankName"}
                   id="bankName"
+                  className="custom-select"
                   onChange={inputChange}
-                  className="title"
-                  placeholder="Enter bank name & Sol ID."
-                  value={formData.bankName}
-                />
+                  name="bankName"
+                >
+                  <option disabled className="title" value="formData.bankName">
+                    Choose the bank name...
+                  </option>
+                  <option>Bank of Baroda</option>
+                  <option>HDFC Bank</option>
+                  <option>Axis Bank</option>
+                </select>
                 <br />
                 <br />
                 <label htmlFor="category">Catogory:</label>
                 {errors.category && (
                   <span className="inputError">{errors.category}</span>
                 )}
-                <select defaultValue={'formData.category'}
+                <select
+                  defaultValue={"formData.category"}
                   id="category"
                   className="custom-select"
                   onChange={inputChange}
                   name="category"
                 >
-                  <option
-                    
-                    disabled
-                    className="title"
-                    value="formData.category"
-                  >
+                  <option disabled className="title" value="formData.category">
                     Choose an option...
                   </option>
                   <option>Low</option>
@@ -240,23 +257,23 @@ const CreateTicket = () => {
                 {errors.category && (
                   <span className="inputError">{errors.subCategory}</span>
                 )}
-                <select defaultValue={'formData.subCategory'}
+                <select
+                  defaultValue={"formData.subCategory"}
                   id="subCategory"
                   className="custom-select"
                   onChange={inputChange}
                   name="subCategory"
                 >
                   <option
-                  
                     disabled
                     className="title"
                     value="formData.subCategory"
                   >
                     Choose an option...
                   </option>
-                  <option>Helpdesk</option>
-                  <option>Tester</option>
-                  <option>Developer</option>
+                  <option>Helpdesk L1</option>
+                  <option>Helpdesk L2</option>
+                  <option>Helpdesk L3</option>
                 </select>
                 <br />
                 <br />
@@ -302,9 +319,7 @@ const CreateTicket = () => {
                 <div className="saveSubmit">
                   <div className="save"></div>
                   <div className="submit">
-                    <button type="submit" onClick={saveData}>
-                      Submit
-                    </button>
+                    <button type="submit">Submit</button>
                   </div>
                 </div>
                 <p className="email">Email: ashishhsgupta11@gmail.com</p>

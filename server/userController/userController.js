@@ -91,18 +91,7 @@ res.status(201).json({ ticketNumber});
         console.log(error);
     }
 };
-    //     const ticketNumber = Math.floor(Math.random() * 1000);
-    //     if(ticketNumber){
-    //         userData["ticketNumber"] = +ticketNumber
-    //     }
-    //     userData["status"] = "Pending"
-    //    const savedUser = await userData.save();
-    //    res.status(201).json({ticketNumber});
-    // }catch(error){
-    //     res.status(500).json({ error: error.message});
-    //     console.log(error);
-    // }
-//}
+    
 
 export const updateRecords = async(request,res)=> {
     try{
@@ -138,7 +127,19 @@ export const deleteRecord  = async (request, response) => {
 
 export const generateReport = async(req, res) =>{
     try{
-        const data = await userDataModel.find({});
+        let query = {};
+        const { status, state, bank} =req.query;
+
+        if(status && status !== 'All'){
+            query.status = status;
+        }
+        if(state && state !== 'All'){
+            query.location = state;
+        }
+        if(bank && bank !== 'All'){
+            query.bankName = bank;
+        }
+        const data = await userDataModel.find(query);
 
        const workbook = new exceljs.Workbook();
        const worksheet = workbook.addWorksheet('data');

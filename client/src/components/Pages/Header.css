@@ -630,3 +630,14 @@ div#bank-report-list{
 .active{
   color: red;
 }
+.reopen-list label{
+  font-size: 16px;
+  font-weight: bold;
+}
+.reopen-list select{
+  background: rgb(237, 231, 231);
+    width: 7rem;
+    border-radius: 5px;
+    margin-left: 10px;
+    height: 2rem;
+}
