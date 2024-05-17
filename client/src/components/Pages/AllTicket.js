@@ -24,7 +24,8 @@ const AllTicket = ({data}) => {
    const handleSearch =(query)=>{
      const filtered = users.filter(user=>
       user.name.toLowerCase().includes(query.toLowerCase()) ||
-      user.email.toLowerCase().includes(query.toLowerCase())
+      user.email.toLowerCase().includes(query.toLowerCase()) ||
+      user.status.toLowerCase().includes(query.toLowerCase())
       );
       setFilteredData(filtered);
    };

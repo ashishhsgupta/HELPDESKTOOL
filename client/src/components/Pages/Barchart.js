@@ -7,6 +7,7 @@ import axios from 'axios';
 
 const Barchart = () => {
   const [ticketCounts, setTicketCounts] = useState({});
+  const [barChartHeight, setBarChartHeight] = useState('40%');
 
   useEffect(()=>{
     axios.get('http://localhost:2001/api/statusCount')
@@ -47,7 +48,7 @@ console.log('closed:', closedCount)
       options={options}
     />
       </div>
-      <div>
+      <div className='homecontainer2'>
       <Chart
       chartType="PieChart"
       data={data}

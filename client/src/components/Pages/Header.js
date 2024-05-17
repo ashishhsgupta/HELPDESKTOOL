@@ -19,7 +19,7 @@ const userEmail = sessionStorage.getItem('email');
       From Start-up To Enterprise, An Efficiant way.
       </p>
    <Link className='header-link'>
-          <i className="bi-person-circle me-2" style={{fontSize:'25px'}}></i>
+          <i className="bi-person-circle me-2 icon" style={{fontSize:'25px'}}></i>
           <span>Welcome</span><br/>
           <span>{userEmail}</span>
       

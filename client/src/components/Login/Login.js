@@ -80,7 +80,7 @@ const Login = () => {
           </div>
           <div className="login_container">
             <form className="input_form" onSubmit={handleSubmit}>
-            <h4>Login Page</h4>
+            <h4 style={{marginLeft:'-18px'}}>Login Page</h4>
               <div className="login_field">
               <h5>Login from User/Admin as registered</h5>
                 {/* <select name="role" value={role} onChange={(e)=>setRole(e.target.value)}>

@@ -7,21 +7,26 @@
     border-radius: 5px;
 }
 .login_container{
-    width: 40%;
+    max-width: 50%;
     font-size: 20px;
     border-radius: 5px;
 }
 form{
     padding-top: 20px;
     text-align: left;
-    font-size: 20px;
+    font-size: 15px;
     color: #01131f;
+}
+input_form h4{
+    margin-left: -18px;
 }
 .login_field>h5{
     color: red;
+    font-size: 16px;
 }
 .login_field{
     margin-top: 10px;
+    margin-left: -18px;
 }
 .login_field>select{
     border-radius: 5px;
@@ -50,10 +55,12 @@ form{
 .labelField1{
     margin-right: 140px;
     color: rgb(106, 100, 100);
+    font-size: 14px;
 }
 .labelField2{
     margin-right: 200px;
     color: rgb(106, 100, 100);
+    font-size: 14px;
 }
 .submit-btn{
     background: gray;
@@ -89,12 +96,6 @@ form{
 }
 .page-link{
     text-decoration: none;
-}
-
-@media (min-width:350px) and (max-width:750px){
-    .login_field{
-        width: 30px;
-    }
 }
 
 

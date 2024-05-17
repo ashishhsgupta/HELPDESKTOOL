@@ -79,10 +79,10 @@ const Registration = () => {
             <div className="login_container">
            
               <form className="input_form" onSubmit={handleSubmit}>
-                <h2>Registration Page</h2>
+                <h4 style={{marginLeft:'-18px'}}>Registration Page</h4>
                 <div className="login_field1">
                   <div className="inputLabel ">
-                    <h5>Select an option</h5>
+                    <h5>Please select user/admin</h5>
                     <select
                       name="role"
                       defaultValue={"formData.role"}

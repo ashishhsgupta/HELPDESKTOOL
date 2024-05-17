@@ -130,6 +130,7 @@ button.pageName{
 /* home page css */
 .flexhomePage {
   display: flex;
+  justify-content: end;
 }
 .homecontainer {
   width: 100%;
@@ -640,4 +641,73 @@ div#bank-report-list{
     border-radius: 5px;
     margin-left: 10px;
     height: 2rem;
+}
+
+select option[value=""]{
+  color: red;
+}
+
+@media (min-width:350px) and (max-width:750px){
+  .home-container{
+    width: 100%;
+  }
+  .flexhomePage{
+    width: 100%;
+  }
+  .home-sidebar{
+    width: 25%;
+  }
+  .homecontainer{
+    width: 75%;
+    margin-left: 2px;
+  }
+  .homesub_container{
+    margin: 15px;
+  }
+  .homecontainer .dashboard-welcome h2{
+    font-size: 15px;
+  }
+  .homecontainer .dashboard-welcome h3{
+    font-size: 15px;
+  }
+  .sidebar .liList i{
+  display: none;
+  }
+  .sidebar .liList-role i{
+    display: none;
+    font-size: 12px;
+  }
+  .sidebar .liList-role span{
+    margin-left: -12px;
+    font-size: 12px;
+  }
+  .liList-role{
+    margin-left: -18px;
+  }
+  .sidebar .liList span{
+    margin-left: 2px;
+    font-size: 12px;
+  }
+  .liList-add{
+    margin-left: 8px;
+  }
+  .sidebar .liList button{
+    margin-left: 8px;
+    font-size: 12px;
+  }
+  .header p{
+    font-size: 10px;
+  }
+  .dashbordLink img{
+    width: 70px;
+  }
+  .header span{
+    font-size: 8px;
+    line-height: 2;
+  }
+  .charts-status{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 }

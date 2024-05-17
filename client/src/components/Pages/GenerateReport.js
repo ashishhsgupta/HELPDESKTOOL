@@ -25,11 +25,6 @@ const GenerateReport = () => {
         bank: selectedBank !== "All" ? selectedBank : undefined
       }
      });
-    // const dataAvailable = response.data.dataAvailable;
-    // if(!dataAvailble){
-    //   alert('No data available for selected combination');
-    //   return;
-    // }
 
           console.log('ashish:',response );
           const blob = new Blob([response.data], {type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
@@ -61,7 +56,7 @@ const GenerateReport = () => {
     <div id='status-report-list'>
         <label className='report-level'>Report Type</label><br/>
         <select name="type" id="dropdowm-list" value={selectedStatus} onChange={(e)=> setSelecetdStatus(e.target.value)}>
-            <option value="disabled" style={{color:"red"}}>Select Category</option>
+            <option value="" disabled style={{color:"red"}}>Select Category</option>
             <option>All</option>
             <option>Pending</option>
             <option>Progress</option>

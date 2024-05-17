@@ -20,14 +20,21 @@ const Home = () => {
   }, []);
 
   return (
+   
     <>
-      <div className="">
-        <div className="">
+    {/* <Header /> */}
+    <div className="home-container">
+    
+      {/* <div className="home-dashboard">
+     
+        <div className="home-dashboard-header">
           <Header />
         </div>
-      </div>
+      </div> */}
+      <Header/>
       <div className="flexhomePage">
-        <div>
+      
+        <div className="home-sidebar">
           <Sidebar />
         </div>
         <div className="homecontainer">
@@ -41,6 +48,7 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </>
   );

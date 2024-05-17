@@ -27,8 +27,10 @@ const Sidebar = () =>{
    <>
       <div className='sidebar'>
         <Link className='profile'>
+        <div className='liList-role' >
         <i className="bi-people" style={{fontSize:'30px'}}></i>
           <span className='' style={{marginLeft:'15px'}}> Role : {role}</span>
+          </div>
         </Link>
         <ul className='nav'>
           <li className={location.pathname === '/dashboard' ? 'active' : ''}>
@@ -43,9 +45,9 @@ const Sidebar = () =>{
           <li>
           <Link to="/createTicket" 
           onClick={()=> handleClick('Raise a ticket')} className={activeLink === 'Raise a ticket' ? 'active': ''}>
-            <div className='liList'>
+            <div className='liList liList-add'>
               <i className="bi-telephone-plus me-2" style={{fontSize:'30px'}}></i>
-              <span className='pageName' style={{marginLeft:'8px'}}>Raise a Ticket +</span>
+              <span className='pageName' style={{marginLeft:'8px'}}>Add Ticket</span>
             </div>
           </Link>
           </li>
@@ -84,7 +86,7 @@ const Sidebar = () =>{
           <li>
           <Link to="/resolvedTicket" 
           onClick={()=> handleClick('Resolved')} className={activeLink === 'Resolved' ? 'active' : ''}>
-            <div className='liList'>
+            <div className='liList liList-add'>
               <i className="bi-journal-check me-2" style={{fontSize:'30px'}}></i>
               <span className='pageName' style={{marginLeft:'8px'}}>Resolved</span>
             </div>
@@ -105,7 +107,6 @@ const Sidebar = () =>{
           onClick={()=> handleClick('Closed')} className={activeLink === 'Closed' ? 'active' : ''}>
             <div className='liList'>
             <i className="bi bi-backspace-reverse" style={{fontSize:'30px'}}></i>
-              
               <span className='pageName' style={{marginLeft:'15px'}}>Closed</span>
             </div>
           </Link>
@@ -120,7 +121,7 @@ const Sidebar = () =>{
           </Link>
           </li>
           <li>
-            <div className='liList'>
+            <div className='liList liList-add'>
               <i className="bi-box-arrow-right me-2" style={{fontSize:'30px'}}></i>
               <button onClick={handleLogout} className='pageName' style={{marginLeft:'8px'}}>Logout</button>
             </div>

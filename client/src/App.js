@@ -38,10 +38,10 @@ function App() {
         <Route path='/preview' element={<PreviewRecords/>}/>
         <Route path='/updateRecord' element={<UpdateRecords/>}/>
         <Route path='/editRecord' element={<EditRecord/>}/>
-        <Route path='generateReport' element={<GenerateReport />} />
-        <Route path='resolvedTicket' element={<ResolveTicket/>}/>
-        <Route path='reopenTicket' element={<ReopenTicket/>}/>
-        <Route path='closedTicket' element={<ClosedTicket/>}/>
+        <Route path='/generateReport' element={<GenerateReport />} />
+        <Route path='/resolvedTicket' element={<ResolveTicket/>}/>
+        <Route path='/reopenTicket' element={<ReopenTicket/>}/>
+        <Route path='/closedTicket' element={<ClosedTicket/>}/>
       
 
     </Routes>
