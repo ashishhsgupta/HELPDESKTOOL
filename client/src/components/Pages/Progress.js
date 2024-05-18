@@ -89,15 +89,16 @@ const handleModelDelete = (modelValue) =>{
   return (
     <>
       <div className='allTicket-header'>
-    <div className='allTicket-subHeader'>
+      <Header/>
+    {/* <div className='allTicket-subHeader'>
 
     <div>
       <Header/>
       </div>
   
-    </div>
+    </div> */}
     <div className='allTicket-flex'>
-    <div className=''>
+    <div className='ticket-count'>
     <Sidebar />
     </div>
     <div className='table-head'>
@@ -105,6 +106,7 @@ const handleModelDelete = (modelValue) =>{
       <div><h5>Total Progress Tickets : {userCount}</h5></div>
       <SearchFilter users={users} setUsers={setUsers} users2={users2} handleSearch={handleSearch}/>
       </div>
+      <div className='allTicket-table'>
         <table className='customers'>
           <thead className='thead-data'>
             <tr className='row-data'>
@@ -134,8 +136,7 @@ const handleModelDelete = (modelValue) =>{
 ))}
           </tbody>
         </table>
-    
-    
+        </div>
 
     <div className="nav-page">
           <div className="back-btn">

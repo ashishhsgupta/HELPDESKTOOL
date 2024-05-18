@@ -69,7 +69,7 @@ const UpdateRecords = () => {
       <Header />
 
       <div className="update-records">
-        <div>
+        <div className='edit-records'>
           <Sidebar />
         </div>
 

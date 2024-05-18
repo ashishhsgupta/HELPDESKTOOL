@@ -103,7 +103,7 @@ const CreateTicket = () => {
         <Header />
       </div>
       <div className="ticket-container">
-        <div className="">
+        <div className="ticket-sidebar">
           <Sidebar />
         </div>
         <div className="ticket-page">
@@ -179,7 +179,7 @@ const CreateTicket = () => {
                 />
                 <br />
                 <br />
-                <div>
+                <div className="ticket-description">
                   <label htmlFor="description">Description:</label>
                   <br />
                   <JoditEditor

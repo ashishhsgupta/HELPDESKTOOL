@@ -34,7 +34,6 @@
 .tech_img_container{
     background-image: url('./loginimg.png');
     background-repeat: no-repeat;
-    /* background-size: cover; */
     border-radius: 5px;
     width: 60%;
     height: 400px;
@@ -56,6 +55,7 @@ form{
 .login_field1{
 line-height: 3;
 margin-left: -18px;
+line-height: 4;
 }
 .inputlabel{
     width: 280px;

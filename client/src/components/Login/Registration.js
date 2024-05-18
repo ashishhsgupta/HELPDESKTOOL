@@ -70,7 +70,7 @@ const Registration = () => {
 
   return (
     <>
-      <div>
+      {/* <div className="super-container"> */}
         <div className="container">
           <div className="sub_container">
             <div className="tech_img_container">
@@ -160,7 +160,7 @@ const Registration = () => {
             </div>
           </div>
         </div>
-      </div>
+      {/* </div> */}
     </>
   );
 };

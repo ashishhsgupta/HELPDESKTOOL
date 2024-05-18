@@ -51,10 +51,6 @@ const editor = useRef(null);
     return;
   }
 
-  // if (selectedStatus === "Reopen" || selectedStatus === 'Closed') {
-  //   setCurrentStatus(selectedStatus);
-  // }
-
   let userId = userValue._id;
   axios.put(`http://localhost:2001/api/v4/updateRecords/${userId}`,  {userValue, status:selectedStatus})
     .then((response) => {
@@ -73,7 +69,9 @@ console.log('Current Status', currentStatus);
     <Header/>
     
     <div className='update-records'>
-      <div><Sidebar/></div>
+      <div className='edit-records'>
+        <Sidebar/>
+      </div>
       
       <div className='app-records'>
       <h4>Edit Records</h4><hr/>

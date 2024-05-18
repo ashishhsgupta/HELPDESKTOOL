@@ -83,10 +83,6 @@ const Login = () => {
             <h4 style={{marginLeft:'-18px'}}>Login Page</h4>
               <div className="login_field">
               <h5>Login from User/Admin as registered</h5>
-                {/* <select name="role" value={role} onChange={(e)=>setRole(e.target.value)}>
-                  <option value="user">User</option>
-                  <option value="admin">Admin</option>
-                </select> */}
               <div className="inputLabel-email ">
               <div ><label className="labelField1">Username/Email:</label></div>
               <div><input type="text" onChange={inputChange} className="inputlabel" name="email"

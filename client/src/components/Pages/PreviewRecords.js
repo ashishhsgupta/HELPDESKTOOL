@@ -15,7 +15,9 @@ const PreviewRecords = () => {
   <>
    <Header/>
     <div className='preview_records'>
-    <div><Sidebar/></div>
+    <div className='edit-records'>
+      <Sidebar/>
+    </div>
     <div className='app-details'>
       <h4><strong>View Application Details:</strong></h4>
       <div className='form-data'>

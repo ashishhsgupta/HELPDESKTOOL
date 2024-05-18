@@ -22,15 +22,8 @@ const Home = () => {
   return (
    
     <>
-    {/* <Header /> */}
+   
     <div className="home-container">
-    
-      {/* <div className="home-dashboard">
-     
-        <div className="home-dashboard-header">
-          <Header />
-        </div>
-      </div> */}
       <Header/>
       <div className="flexhomePage">
       

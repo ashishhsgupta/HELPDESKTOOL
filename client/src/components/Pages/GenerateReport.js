@@ -53,7 +53,7 @@ const GenerateReport = () => {
     <div className='container-report-btn'>
     <h4>My Reports</h4>
     <div className='report-selection'>
-    <div id='status-report-list'>
+    <div id='status-report-list' className='status-report-list'>
         <label className='report-level'>Report Type</label><br/>
         <select name="type" id="dropdowm-list" value={selectedStatus} onChange={(e)=> setSelecetdStatus(e.target.value)}>
             <option value="" disabled style={{color:"red"}}>Select Category</option>
@@ -65,7 +65,7 @@ const GenerateReport = () => {
             <option>Closed</option>
         </select>
     </div>
-    <div>
+    <div className='state-report-list'>
         <label className='report-level'>State Wise</label><br/>
         <select name="type" id="dropdowm-list" value={selectedState} onChange={(e)=> setSelecetdState(e.target.value)}>
             <option value="disabled" style={{color:"red"}}>Select State</option>
@@ -77,7 +77,7 @@ const GenerateReport = () => {
             <option>Rajasthan</option>
         </select>
     </div>
-    <div id='bank-report-list'>
+    <div id='bank-report-list' className='status-report-list'>
         <label className='report-level'>Bank Wise</label><br/>
         <select name="type" id="dropdowm-list" value={selectedBank} onChange={(e)=> setSelectedBank(e.target.value)} >
             <option value="disabled" style={{color:"red"}}>Select Bank</option>
