@@ -8,8 +8,6 @@ const router = express();
 router.post('/api/v1/signup', usersignup);
 router.post('/api/v2/signin', usersignin);
 router.post('/api/v3/postData',  postUserData);
-router.put('/api/v4/updateRecords/:id', updateRecords);
-router.delete('/api/v5/removeRecord/:id', deleteRecord);
 router.get('/api/data/count', ticketCount);
 router.get('/api/report/downloadReport', generateReport);
 router.get('/api/ticket/pendingTicket', pendingTickets);
@@ -18,6 +16,8 @@ router.get('/api/ticket/reopenTicket', reopenTickets);
 router.get('/api/ticket/closedTicket', closedTickets);
 router.get('/api/ticket/progressTicket', progressTickets);
 router.get('/api/statusCount', chartStatusCount);
+router.put('/api/v4/updateRecords/:id', updateRecords);
+router.delete('/api/v5/removeRecord/:id', deleteRecord);
 
 router.get('/api/getUserdata', async (req, res)=> {
     try{

@@ -14,6 +14,9 @@ import Table from 'react-bootstrap/Table';
 const PendingTicket = ({data}) => {
   const navigate = useNavigate();
 
+  const role = sessionStorage.getItem('role');
+  console.log('role', role)
+
 const [pendingTickets, setPendingTickets]= useState([]);
   const [filteredData, setFilteredData] = useState(data);
    useEffect(()=>{
@@ -114,7 +117,26 @@ const handleModelDelete = (modelValue) =>{
               <th scope="col" colSpan={3} className="colspan-action" style={{textAlign:'center'}}>Action</th>      
             </tr>
           </thead>
+          {role === 'user' ? (
           <tbody>
+            {
+             records.map((user, index ) => (
+              <tr key={user._id}>
+                <td className='sr-no'>{index+1+(currentPage-1)*recordsPerPage}</td>
+                <td>{user.ticketNumber}</td>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>{user.subject}</td>
+                <td>{user.status}</td>
+                <td className='td-action1'onClick={() =>handlePreview(user)}>Preview</td>
+                <td className='td-action2' onClick={()=>handleUpdate(user)}>Update</td>
+                {/* <td className='td-action3' onClick={()=>deleteData(user,index+1+ (currentPage - 1) * recordsPerPage)}>Delete</td> */}
+              </tr>
+            ))
+             }
+          </tbody>
+          ):(
+            <tbody>
             {
              records.map((user, index ) => (
               <tr key={user._id}>
@@ -128,8 +150,9 @@ const handleModelDelete = (modelValue) =>{
                 <td className='td-action2' onClick={()=>handleUpdate(user)}>Update</td>
                 <td className='td-action3' onClick={()=>deleteData(user,index+1+ (currentPage - 1) * recordsPerPage)}>Delete</td>
               </tr>
-))}
+            ))}
           </tbody>
+          )}
         </table>
         </div>
 

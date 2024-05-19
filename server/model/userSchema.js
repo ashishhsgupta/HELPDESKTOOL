@@ -53,16 +53,20 @@ const userDataSchema = new mongoose.Schema({
         type:String,unique:false,required:true
     },
     location:{
-        type: String,required: false,trim: true
+        type: String,required: true,trim: true,
+        enum:['Delhi', 'Uttar pradesh', 'Madhya pradesh', 'Maharashtra', 'Rajasthan'] 
     },
     bankName:{
-        type:String,unique:false,required:false
+        type:String,unique:false,required:true,
+        enum:['Bank of Baroda', 'HDFC Bank', 'Axis Bank']
     },
     category:{
-        type: String,required: false,trim: true
+        type: String,required: true,trim: true,
+        enum:['Low', 'Midium', 'High']
     },
     subCategory:{
-        type:String,unique:false,required:false
+        type:String,unique:false,required:true,
+        enum:['Helpdesk L1', 'Helpdesk L2', 'Helpdesk L3']
     }
     // description:{
     //     type:String,unique:false,required:false
