@@ -20,6 +20,9 @@ const [resolvedTicket, setResolvedTicket]= useState([]);
     setFilteredData(data);
    },[data]);
 
+   console.log(filteredData);
+   console.log(resolvedTicket);
+
    const handleSearch =(query)=>{
      const filtered = users.filter(user=>
       user.name.toLowerCase().includes(query.toLowerCase()) ||

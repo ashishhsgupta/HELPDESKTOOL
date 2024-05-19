@@ -20,6 +20,9 @@ const [pendingTickets, setPendingTickets]= useState([]);
     setFilteredData(data);
    },[data]);
 
+   console.log(filteredData);
+   console.log(pendingTickets);
+
    const handleSearch =(query)=>{
      const filtered = users.filter(user=>
       user.name.toLowerCase().includes(query.toLowerCase()) ||

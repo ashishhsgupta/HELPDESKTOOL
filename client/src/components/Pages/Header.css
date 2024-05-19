@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200&display=swap'); */
 
 
 .sidebar a,
@@ -127,7 +127,7 @@ button.pageName{
 /* home page css */
 .flexhomePage {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .homecontainer {
   width: 80%;
@@ -674,7 +674,7 @@ select option[value=""]{
     font-size: 12px;
   }
   .liList-role{
-    margin-left: -18px;
+    margin-left: -30px;
   }
   .sidebar .liList span{
     margin-left: 2px;
@@ -762,7 +762,7 @@ select option[value=""]{
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 30%;
+    height: 40%;
     margin-left: -20px;
   }
   .report-selection>select#dropdowm-list{
@@ -792,7 +792,7 @@ select option[value=""]{
   .report-alert{
     margin-left: -20px;
     width: 100%;
-    height: 20%;
+    height: 25%;
   }
   .report-alert p{
     font-size: 14px;
@@ -806,3 +806,4 @@ select option[value=""]{
     margin-left: -20px;
   }
 }
+

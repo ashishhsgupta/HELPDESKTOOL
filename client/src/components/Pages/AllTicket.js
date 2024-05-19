@@ -21,6 +21,8 @@ const AllTicket = ({data}) => {
     setFilteredData(data);
    },[data]);
 
+   console.log(filteredData);
+   
    const handleSearch =(query)=>{
      const filtered = users.filter(user=>
       user.name.toLowerCase().includes(query.toLowerCase()) ||
@@ -94,13 +96,6 @@ const handleModelDelete = (modelValue) =>{
     <>
     <Header/>
     <div className='allTicket-header'>
-    {/* <div className='allTicket-subHeader'>
-
-    <div>
-      <Header/>
-      </div>
-  
-    </div> */}
     <div className='allTicket-flex'>
     <div className='allTicket-sidebar'>
     <Sidebar />
@@ -110,7 +105,7 @@ const handleModelDelete = (modelValue) =>{
       <div><h5>Total Ticket Counts : {userCount}</h5></div>
       <SearchFilter users={users} setUsers={setUsers} users2={users2} handleSearch={handleSearch}/>
       </div>
-      <div>
+      <div className='allTicket-table'>
         <table className='customers'>
           <thead className='thead-data'>
             <tr className='row-data'>

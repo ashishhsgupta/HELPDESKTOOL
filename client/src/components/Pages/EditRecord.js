@@ -140,7 +140,6 @@ console.log('Current Status', currentStatus);
   <option value="Reopen">Reopen</option>
   <option value="Closed">Closed</option>
   </select>
-  {/* <button onClick={handleStatusUpdate}>Update Status</button> */}
   </div>
   )}
   
@@ -148,7 +147,8 @@ console.log('Current Status', currentStatus);
       <div className='update-btn'>
       <div className='update-btn-btn'><button type='button' onClick={()=>navigate('/allTicket')}>Back</button></div>
      
-      {role === 'user' && (currentStatus === 'Progress' || currentStatus === 'Closed') ||(role === 'admin' && currentStatus === 'Resolved') ? null :(
+      {(role === 'user' && (currentStatus === 'Progress' || currentStatus === 'Closed')) || 
+      (role === 'admin' && currentStatus === 'Resolved') ? null :(
       <div>
         <button type='button' onClick={handleSubmit} >Update</button>
         </div>

@@ -167,7 +167,7 @@ const UpdateRecords = () => {
           </div>
           <br />
 
-          {role === 'user' && (currentStatus === 'Pending' || currentStatus === 'Progress' || currentStatus === "Resolved" || currentStatus === "Closed" || currentStatus === 'Reopen') || role === 'admin' && currentStatus === 'Closed' ? null : (
+          {(role === 'user' && (currentStatus === 'Pending' || currentStatus === 'Progress' || currentStatus === "Resolved" || currentStatus === "Closed" || currentStatus === 'Reopen')) || (role === 'admin' && currentStatus === 'Closed') ? null : (
             <div className="updateRecord-option">
               <select
                 value={selectedStatus}
@@ -189,7 +189,7 @@ const UpdateRecords = () => {
                 Back
               </button>
             </div>
-            {role === 'user' && currentStatus === 'Progress' || (currentStatus === "Resolved" ||
+            {(role === 'user' && currentStatus === 'Progress') || (currentStatus === "Resolved" ||
             currentStatus === "Closed") ? null : (
               <div>
                 <button type="button" onClick={handleSubmit}>

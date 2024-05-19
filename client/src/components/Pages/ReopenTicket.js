@@ -20,6 +20,9 @@ const [reopenTicket, setReopenTicket]= useState([]);
     setFilteredData(data);
    },[data]);
 
+   console.log(filteredData);
+   console.log(reopenTicket);
+
    const handleSearch =(query)=>{
      const filtered = users.filter(user=>
       user.name.toLowerCase().includes(query.toLowerCase()) ||
@@ -89,7 +92,13 @@ const handleModelDelete = (modelValue) =>{
   return (
     <>
       <div className='allTicket-header'>
+    <div className='allTicket-subHeader'>
+
+    <div>
       <Header/>
+      </div>
+  
+    </div>
     <div className='allTicket-flex'>
     <div className='ticket-count'>
     <Sidebar />

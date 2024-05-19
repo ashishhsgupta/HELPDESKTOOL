@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const Barchart = () => {
   const [ticketCounts, setTicketCounts] = useState({});
-  const [barChartHeight, setBarChartHeight] = useState('40%');
+  //const [barChartHeight, setBarChartHeight] = useState('');
 
   useEffect(()=>{
     axios.get('http://localhost:2001/api/statusCount')
@@ -26,15 +26,11 @@ const Barchart = () => {
     ['Resolved', resolvedCount || 0],
     ['Progress', progressCount || 0],
     ['Reopen', reopenCount || 0],
-    ['Closed', closedCount || 0],
+    ['Closed', closedCount || 0]
   ];
-console.log('reopen:', reopenCount)
-console.log('closed:', closedCount)
 
   const options = {
-    chart: {
       title: 'Ticket status'
-    },
   };
     
   return (
@@ -46,6 +42,8 @@ console.log('closed:', closedCount)
       height="400px"
       data={data}
       options={options}
+      // chartPackages={['corechart']}
+      // chartVersion="51"
     />
       </div>
       <div className='homecontainer2'>
@@ -57,9 +55,7 @@ console.log('closed:', closedCount)
       height={"400px"}
     />
       </div>
-        </div>
-        
-    
+        </div>  
   )
 }
 

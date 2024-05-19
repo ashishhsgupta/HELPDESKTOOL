@@ -20,6 +20,9 @@ const [progressTicket, setProgressTicket]= useState([]);
     setFilteredData(data);
    },[data]);
 
+   console.log(filteredData);
+   console.log(progressTicket);
+
    const handleSearch =(query)=>{
      const filtered = users.filter(user=>
       user.name.toLowerCase().includes(query.toLowerCase()) ||
@@ -90,13 +93,6 @@ const handleModelDelete = (modelValue) =>{
     <>
       <div className='allTicket-header'>
       <Header/>
-    {/* <div className='allTicket-subHeader'>
-
-    <div>
-      <Header/>
-      </div>
-  
-    </div> */}
     <div className='allTicket-flex'>
     <div className='ticket-count'>
     <Sidebar />
