@@ -29,6 +29,4 @@ router.get('/api/getUserdata', async (req, res)=> {
     }
 });
   
-
-
 export default router;

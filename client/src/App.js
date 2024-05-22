@@ -17,10 +17,7 @@ import ClosedTicket from './components/Pages/ClosedTicket';
 import EditRecord from './components/Pages/EditRecord';
 
 
-
-
 function App() {
-
 
   return (
     

@@ -148,10 +148,9 @@ const handleModelDelete = (modelValue) =>{
                 <td>{user.status}</td>
                 <td className='td-action1'onClick={() =>handlePreview(user)}>Preview</td>     
                <td className='td-action2' onClick={()=>handleUpdate(user)}>Update</td>
-               <td className='td-action3' onClick={()=>deleteData(user,index+1+ (currentPage - 1) * recordsPerPage)}>Delete</td>
-                
+               <td className='td-action3' onClick={()=>deleteData(user,index+1+ (currentPage - 1) * recordsPerPage)}>Delete</td>    
               </tr>
-))}   
+            ))}   
           </tbody>
   )}
         </table>

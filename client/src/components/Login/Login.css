@@ -76,7 +76,7 @@ input_form h4{
 }
 .bottom-link{
     cursor: pointer;
-    margin: 0;
+    margin-left: -18px;
 }
 .forgotPass, .signup{
     font-size: 14px;
@@ -97,6 +97,7 @@ input_form h4{
 .page-link{
     text-decoration: none;
 }
+
 
 
 

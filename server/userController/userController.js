@@ -67,6 +67,18 @@ export const usersignin = async (req, res) => {
       }
  }
 
+//  export const updatePassword = async(req, res)=>{
+//     try{
+//         let newPassword = new userDataModel(req.body);
+//         const user = await userDataModel.findOne({email: req.body.email});
+//         if(!user){
+//             return res.status(400).json({error: 'User not found!'});
+//         }
+//     }catch(error){
+//         console.error(error);
+//     }
+//  }
+
 export const postUserData = async(req, res)=>{
     try{
         console.log('req.body',req.body)

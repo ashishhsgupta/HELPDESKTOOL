@@ -5,9 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import '../Pages/Header.css';
 
 
-
 const Sidebar = () =>{
-  const [activeLink, setActiveLink] = useState(null);
+  const [activeLink, setActiveLink] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
   const role = sessionStorage.getItem('role');
