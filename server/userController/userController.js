@@ -67,22 +67,14 @@ export const usersignin = async (req, res) => {
       }
  }
 
-//  export const updatePassword = async(req, res)=>{
-//     try{
-//         let newPassword = new userDataModel(req.body);
-//         const user = await userDataModel.findOne({email: req.body.email});
-//         if(!user){
-//             return res.status(400).json({error: 'User not found!'});
-//         }
-//     }catch(error){
-//         console.error(error);
-//     }
-//  }
-
 export const postUserData = async(req, res)=>{
     try{
         console.log('req.body',req.body)
-        let userData = new  userDataModel(req.body); 
+        const{name,email,department,subject,location,bankName,category,subCategory,description}= req.body;
+        const userData = new userDataModel({
+            name,email,department,subject,location,bankName,category,subCategory,description
+        });
+        // let userData = new  userDataModel(req.body); 
         const lastTicket = await userDataModel.findOne({}, {}, {sort:{'createdAt': -1}});       
      let lastTicketNumber = lastTicket ? parseInt(lastTicket.ticketNumber.replace(/[^\d]/g, '')): 0;
 
@@ -104,7 +96,6 @@ res.status(201).json({ ticketNumber});
     }
 };
     
-
 export const updateRecords = async(request,res)=> {
     try{
        const id= request.params.id;
@@ -113,7 +104,7 @@ export const updateRecords = async(request,res)=> {
         return res.status(404).json({message:'user not found'});
        }
        console.log(userExist,"userExist++")
-       //request.body["status"] = userExist["status"] || "";
+       
        const updatedUser= await userDataModel.findByIdAndUpdate(id, request.body,{new: true})
        res.status(201).json(updatedUser);
 
@@ -124,7 +115,6 @@ export const updateRecords = async(request,res)=> {
 
 export const deleteRecord  = async (request, response) => {
     try{
-        // const id= req.params.id;
          const userExist = await userDataModel.findOne({ _id : request.params.id })
          if (!userExist) {
              return response.status(404).json({ message: 'user not found.' });

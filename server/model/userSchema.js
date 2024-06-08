@@ -67,10 +67,10 @@ const userDataSchema = new mongoose.Schema({
     subCategory:{
         type:String,unique:false,required:true,
         enum:['Helpdesk L1', 'Helpdesk L2', 'Helpdesk L3']
+    },
+    description:{
+        type:String,unique:false,required:true,
     }
-    // description:{
-    //     type:String,unique:false,required:false
-    // }
   },{timestamps:true}
   );
 

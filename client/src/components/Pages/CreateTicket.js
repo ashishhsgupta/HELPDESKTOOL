@@ -14,7 +14,7 @@ const CreateTicket = () => {
   const [image, setImage] = useState(null);
   const [fileName, setFileName] = useState("No selected image");
   const editor = useRef(null);
-  const [content, setcontent] = useState("");
+  //const [content, setcontent] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,12 +24,21 @@ const CreateTicket = () => {
     bankName: "",
     category: "",
     subCategory: "",
+    description:"",
   });
   const [errors, setErrors] = useState({});
   const inputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
+const handleContentChange = (newContent) => {
+ setFormData((prevFormData)=> ({
+  ...prevFormData, description: newContent,
+ }));
+}
+
+console.log("des:",formData.description);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -182,11 +191,11 @@ const CreateTicket = () => {
                 <div className="ticket-description">
                   <label htmlFor="description">Description:</label>
                   <br />
-                  <JoditEditor
+                  <span><JoditEditor
                     ref={editor}
-                    value={content}
-                    onChange={(newContent) => setcontent(newContent)}
-                  />
+                    value={formData.description}
+                    onChange={handleContentChange}
+                  /></span>
                 </div>
                 <br />
                 <label htmlFor="category">Location:</label>

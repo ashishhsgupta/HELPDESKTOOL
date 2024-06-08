@@ -34,25 +34,33 @@ const editor = useRef(null);
     const {name, value} = e.target;
     console.log(name, value,"ashish12")
     setUserValue ({...userValue,[name]: value});
-  }
+  };
 
   const handleSubmit = () => {
   console.log('Role:', role);
 
-  console.log('Current status:', currentStatus);
-  console.log('Selected status:', selectedStatus);
+  console.log('Current status-:', currentStatus);
+  console.log('Selected status-:', selectedStatus);
 
 
-  if (
-    role === "user" &&
-    (selectedStatus === "disabled" || !selectedStatus)
-  ) {
+  if (role === 'user' && (currentStatus === 'Reopen' || currentStatus === 'Pending')){
+  let userId = userValue._id;
+  axios.put(`http://localhost:2001/api/v4/updateRecords/${userId}`,  { ...userValue, status:currentStatus })
+    .then((response) => {
+      alert("Data updated successfully");
+      console.log(response,"data updated")
+      navigate('/allTicket')
+    })
+    .catch((error)=> console.log(error));
+    return;
+  };
+  if ( role === 'user' && (selectedStatus === 'disabled' || !selectedStatus)){
     alert("Please select the status");
     return;
   }
 
   let userId = userValue._id;
-  axios.put(`http://localhost:2001/api/v4/updateRecords/${userId}`,  {userValue, status:selectedStatus})
+  axios.put(`http://localhost:2001/api/v4/updateRecords/${userId}`,  { ...userValue, status:selectedStatus })
     .then((response) => {
       setCurrentStatus(selectedStatus);
       console.log('Updated current status:', selectedStatus);
@@ -60,9 +68,9 @@ const editor = useRef(null);
       console.log(response,"data updated")
       navigate('/allTicket')
     })
-    .catch((error)=> console.log(error));
+    .catch((error) => console.log(error));
   };
-  
+
 console.log('Current Status', currentStatus);
     return (
     <>
@@ -83,6 +91,7 @@ console.log('Current Status', currentStatus);
               value={userValue.name}
               onChange={handleValueChange} maxLength={20} 
               readOnly={role ==='admin' || currentStatus === 'Resolved' ||  currentStatus === 'Progress' || currentStatus === 'Closed'}
+             
             /><br/><br/>
       <label htmlFor="email">Email:</label><br/>
       <input

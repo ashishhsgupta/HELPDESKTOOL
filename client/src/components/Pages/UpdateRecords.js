@@ -45,6 +45,7 @@ const UpdateRecords = () => {
       return;
     }
 
+
     console.log("Current status:", currentStatus);
     console.log("Selected status:", selectedStatus);
 
@@ -167,7 +168,7 @@ const UpdateRecords = () => {
           </div>
           <br />
 
-          {(role === 'user' && (currentStatus === 'Pending' || currentStatus === 'Progress' || currentStatus === "Resolved" || currentStatus === "Closed" || currentStatus === 'Reopen')) || (role === 'admin' && currentStatus === 'Closed') ? null : (
+          {(role === 'user' && (currentStatus === 'Pending' || currentStatus === 'Progress' || currentStatus === "Resolved" || currentStatus === "Closed" || currentStatus === 'Reopen')) || (role === 'admin' && (currentStatus === 'Closed' || currentStatus === 'Resolved')) ? null : (
             <div className="updateRecord-option">
               <select
                 value={selectedStatus}
