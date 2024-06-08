@@ -16,7 +16,7 @@ const UpdateRecords = () => {
   const [currentStatus, setCurrentStatus] = useState(location.state.status);
 
   const editor = useRef(null);
-  const [content, setcontent] = useState("");
+  //const [content, setcontent] = useState("");
 
   const [userValue, setUserValue] = useState({
     _id: location.state._id,
@@ -26,6 +26,7 @@ const UpdateRecords = () => {
     subject: location.state.subject,
     location: location.state.location,
     bankName: location.state.bankName,
+    description: location.state.description,
   });
 
   const handleValueChange = (e) => {
@@ -33,6 +34,12 @@ const UpdateRecords = () => {
     console.log(name, value, "ashish12");
     setUserValue({ ...userValue, [name]: value });
   };
+
+  const handleContentChange = (newContent) => {
+    setUserValue((prevUserValue)=> ({
+     ...prevUserValue, description: newContent,
+    }));
+   }
 
   const handleSubmit = () => {
     console.log("Role:", role);
@@ -162,8 +169,8 @@ const UpdateRecords = () => {
             </label>
             <JoditEditor
               ref={editor}
-              value={content}
-              onChange={(newContent) => setcontent(newContent)}
+              value={userValue.description}
+              onChange={handleContentChange}
             />
           </div>
           <br />

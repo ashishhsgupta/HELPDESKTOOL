@@ -15,7 +15,7 @@ const role = sessionStorage.getItem('role');
 console.log('Role:', role);
 
 const editor = useRef(null);
-  const [content, setcontent] = useState("");
+  //const [content, setcontent] = useState("");
 
   const [currentStatus, setCurrentStatus] = useState(location.state.status);
   const [selectedStatus, setSelectedStatus] = useState('');
@@ -28,6 +28,7 @@ const editor = useRef(null);
     subject:location.state.subject,
     location:location.state.location,
     bankName:location.state.bankName,
+    description:location.state.description,
   });
 
   const handleValueChange = (e) => {
@@ -36,6 +37,11 @@ const editor = useRef(null);
     setUserValue ({...userValue,[name]: value});
   };
 
+  const handleContentChange = (newContent) => {
+    setUserValue((prevUserValue)=>({
+      ...prevUserValue, description: newContent,
+    }))
+  }
   const handleSubmit = () => {
   console.log('Role:', role);
 
@@ -136,7 +142,9 @@ console.log('Current Status', currentStatus);
 </div><br/>
 <div>
   <label htmlFor="description"><strong>Description:</strong></label>
-  <JoditEditor ref={editor} value={content} onChange={(newContent) => setcontent(newContent)} />
+  <JoditEditor ref={editor}
+  value={userValue.description}
+  onChange={handleContentChange} />
 </div><br/>
 
  {(role === 'admin' || currentStatus === 'Pending' || currentStatus === 'Closed' ||
