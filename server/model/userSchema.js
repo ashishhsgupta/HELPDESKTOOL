@@ -69,7 +69,7 @@ const userDataSchema = new mongoose.Schema({
         enum:['Helpdesk L1', 'Helpdesk L2', 'Helpdesk L3']
     },
     description:{
-        type:String,unique:false,required:true,
+        type:String,unique:false,required:false,
     }
   },{timestamps:true}
   );

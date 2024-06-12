@@ -38,7 +38,7 @@ const handleContentChange = (newContent) => {
  }));
 }
 
-console.log("des:",formData.description);
+console.log("description:",formData.description);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

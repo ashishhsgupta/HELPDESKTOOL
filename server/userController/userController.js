@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import exceljs from 'exceljs';
 import express from 'express';
+import sanitizeHtml from "sanitize-html";
 
 export const usersignup=async(request,response)=>{
     try{
@@ -71,8 +72,14 @@ export const postUserData = async(req, res)=>{
     try{
         console.log('req.body',req.body)
         const{name,email,department,subject,location,bankName,category,subCategory,description}= req.body;
+        
+        const sanitizeDescription = sanitizeHtml(description,{
+            allowedTags: [],
+            allowedAttibutes:{}
+        });
+        
         const userData = new userDataModel({
-            name,email,department,subject,location,bankName,category,subCategory,description
+            name,email,department,subject,location,bankName,category,subCategory,description:sanitizeDescription
         });
         // let userData = new  userDataModel(req.body); 
         const lastTicket = await userDataModel.findOne({}, {}, {sort:{'createdAt': -1}});       
