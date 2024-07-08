@@ -4,6 +4,7 @@
   "main": "server/server.js",
   "type": "module",
   "scripts": {
+    "server": "nodemone server.js",
     "start": "node server.js"
   },
   "keywords": [],

@@ -47,7 +47,7 @@ input_form h4{
     padding-left: 12px;
     background-color: #e4e4ee;
     border: 1px solid green;
-    
+    line-height: 1;
 }
 .inputLabel-email {
   padding-top: 10px;

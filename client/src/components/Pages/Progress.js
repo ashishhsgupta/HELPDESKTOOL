@@ -203,7 +203,7 @@ const handleModelDelete = (modelValue) =>{
           size="lg"
         >
           <Modal.Header closeButton style={{background:'#E59866', color:'#FDFEFE'}}>
-            <Modal.Title>Click on confirm botton if want to delete this request</Modal.Title>
+            <Modal.Title>Click on confirm button if want to delete this request</Modal.Title>
           </Modal.Header>
           <Modal.Body>
          

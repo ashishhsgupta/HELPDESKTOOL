@@ -21,7 +21,7 @@ const [searchQuery,setSearchQuery] = useState("")
   return (
     <>
       <div className='headerMenu1'> 
-      <label>Search by:Ticket number/Email/name</label>
+      <label>Search by: Name and Email ID</label>
           <div className='input-search1'>
             <div className='head-input'>
             <input type='search' placeholder='search here . . .' className='search_1'

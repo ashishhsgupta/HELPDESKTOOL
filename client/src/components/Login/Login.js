@@ -5,7 +5,6 @@ import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
-  // const [role, setRole] = useState([]);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -21,7 +20,6 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const userRole = {...formData, role};
     const validationErrors = {};
     const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -90,7 +88,7 @@ const Login = () => {
                 <h5>Login from User/Admin as registered</h5>
                 <div className="inputLabel-email ">
                   <div>
-                    <label className="labelField1">Username/Email:</label>
+                    <label className="labelField1">Email ID:</label>
                   </div>
                   <div>
                     <input

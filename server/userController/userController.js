@@ -1,4 +1,3 @@
-//import express, { request } from 'express';
 import { usermodel, userDataModel } from '../model/userSchema.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
@@ -164,12 +163,13 @@ export const generateReport = async(req, res) =>{
         {header:"Category", key:"category"},
         {header:"Sub category", key:"subCategory"},
         {header:"Status", key:"status"},
+        {header:"Date", key:"updatedAt"},
     ];
 
     data.forEach((item)=> {
         worksheet.addRow({ticketNumber:item.ticketNumber, name: item.name, email: item.email,
             department:item.department,subject:item.subject,location:item.location,
-            bankName:item.bankName,category:item.category,subCategory:item.subCategory,status:item.status
+            bankName:item.bankName,category:item.category,subCategory:item.subCategory,status:item.status, updatedAt:item.updatedAt
         });
     });
     res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");

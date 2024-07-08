@@ -268,7 +268,7 @@ const ReopenTicket = ({ data }) => {
           style={{ background: "#E59866", color: "#FDFEFE" }}
         >
           <Modal.Title>
-            Click on confirm botton if want to delete this request
+            Click on confirm button if want to delete this request
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

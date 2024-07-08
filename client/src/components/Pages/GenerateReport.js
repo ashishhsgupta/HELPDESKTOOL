@@ -56,7 +56,7 @@ const GenerateReport = () => {
     <div id='status-report-list' className='status-report-list'>
         <label className='report-level'>Report Type</label><br/>
         <select name="type" id="dropdowm-list" value={selectedStatus} onChange={(e)=> setSelecetdStatus(e.target.value)}>
-            <option value="" disabled style={{color:"red"}}>Select Category</option>
+            <option value="" disabled style={{color:"red"}}>Select Status</option>
             <option>All</option>
             <option>Pending</option>
             <option>Progress</option>
