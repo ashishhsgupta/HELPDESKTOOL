@@ -51,7 +51,7 @@ const editor = useRef(null);
 
   if (role === 'user' && (currentStatus === 'Reopen' || currentStatus === 'Pending')){
   let userId = userValue._id;
-  axios.put(`http://localhost:2001/api/v4/updateRecords/${userId}`,  { ...userValue, status:currentStatus })
+  axios.put(`/api/v4/updateRecords/${userId}`,  { ...userValue, status:currentStatus })
     .then((response) => {
       alert("Data updated successfully");
       console.log(response,"data updated")
@@ -66,7 +66,7 @@ const editor = useRef(null);
   }
 
   let userId = userValue._id;
-  axios.put(`http://localhost:2001/api/v4/updateRecords/${userId}`,  { ...userValue, status:selectedStatus })
+  axios.put(`/api/v4/updateRecords/${userId}`,  { ...userValue, status:selectedStatus })
     .then((response) => {
       setCurrentStatus(selectedStatus);
       console.log('Updated current status:', selectedStatus);

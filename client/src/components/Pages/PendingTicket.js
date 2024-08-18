@@ -39,7 +39,7 @@ const [pendingTickets, setPendingTickets]= useState([]);
   const [userCount, setUserCount] = useState(0);
 
       useEffect(()=> {
-        axios.get('http://localhost:2001/api/ticket/pendingTicket')
+        axios.get('/api/ticket/pendingTicket')
         .then(response =>{
           setPendingTickets(response.data);
          
@@ -83,7 +83,7 @@ const deleteData = (userItem,index)=>{
 const handleModelDelete = (modelValue) =>{
   let itemToBeDeleted = modelValue._id;
   console.log(modelValue._id, "userItem");
-  axios.delete(`http://localhost:2001/api/v5/removeRecord/${itemToBeDeleted}`)
+  axios.delete(`/api/v5/removeRecord/${itemToBeDeleted}`)
   .then((users)=> {
     console.log(users, "--ashhhh");
     alert("Successfully deleted the record!");

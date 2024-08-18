@@ -17,7 +17,7 @@ const GenerateReport = () => {
         return;
       }
         try {
-          const response = await axios.get('http://localhost:2001/api/report/downloadReport', {
+          const response = await axios.get('/api/report/downloadReport', {
         responseType: 'blob',
         params:{
         status: selectedStatus !== "All" ? selectedStatus : undefined,

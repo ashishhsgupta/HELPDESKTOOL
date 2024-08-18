@@ -85,7 +85,7 @@ console.log("description:",formData.description);
     if (Object.keys(validationErrors).length === 0) {
       try {
         const res = await axios.post(
-          "http://localhost:2001/api/v3/postData",
+          "/api/v3/postData",
           formData
         );
         const data = res.data;

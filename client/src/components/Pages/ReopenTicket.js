@@ -40,7 +40,7 @@ const ReopenTicket = ({ data }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:2001/api/ticket/reopenTicket")
+      .get("/api/ticket/reopenTicket")
       .then((response) => {
         setReopenTicket(response.data);
 
@@ -86,7 +86,7 @@ const ReopenTicket = ({ data }) => {
     let itemToBeDeleted = modelValue._id;
     console.log(modelValue._id, "userItem");
     axios
-      .delete(`http://localhost:2001/api/v5/removeRecord/${itemToBeDeleted}`)
+      .delete(`/api/v5/removeRecord/${itemToBeDeleted}`)
       .then((users) => {
         console.log(users, "--ashhhh");
         alert("Successfully deleted the record!");

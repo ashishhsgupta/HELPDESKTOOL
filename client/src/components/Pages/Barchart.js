@@ -10,7 +10,7 @@ const Barchart = () => {
   //const [barChartHeight, setBarChartHeight] = useState('');
 
   useEffect(()=>{
-    axios.get('http://localhost:2001/api/statusCount')
+    axios.get('/api/statusCount')
     .then(response => {
        setTicketCounts(response.data);
     }).catch(error => {

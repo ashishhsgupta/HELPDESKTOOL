@@ -49,7 +49,7 @@ const Registration = () => {
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length === 0) {
       axios
-        .post("http://localhost:2001/api/v1/signup", formData)
+        .post("/api/v1/signup", formData)
         .then((response) => {
           console.log("Registration response:", response);
           if (response.status === 201) {

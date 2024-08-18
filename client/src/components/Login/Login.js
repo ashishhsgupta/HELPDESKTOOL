@@ -40,7 +40,7 @@ const Login = () => {
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length === 0) {
       axios
-        .post("http://localhost:2001/api/v2/signin", formData)
+        .post("/api/v2/signin", formData)
         .then((response) => {
           localStorage.setItem(
             "loginResponseDate",

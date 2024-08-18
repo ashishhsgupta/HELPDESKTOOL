@@ -7,6 +7,7 @@ import helpdeskImg from '../Pages/helpdesk_img.png'
 const Header = () => {
 
 const userEmail = sessionStorage.getItem('email');
+console.log('welcome:', userEmail);
     
   return (
     <>

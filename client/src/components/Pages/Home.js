@@ -10,7 +10,7 @@ const Home = () => {
   const [userCount, setUserCount] = useState("0");
   useEffect(() => {
     axios
-      .get("http://localhost:2001/api/data/count")
+      .get("/api/data/count")
       .then((res) => {
         setUserCount(res.data.count);
       })

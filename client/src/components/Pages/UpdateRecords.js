@@ -58,11 +58,12 @@ const UpdateRecords = () => {
 
     let userId = userValue._id;
     axios
-      .put(`http://localhost:2001/api/v4/updateRecords/${userId}`, {
-        userValue,
+      .put(`/api/v4/updateRecords/${userId}`, {
+        ...userValue,
         status: selectedStatus,
       })
       .then((response) => {
+        setUserValue(response.data);
         setCurrentStatus(selectedStatus);
         console.log("Updated current status:", selectedStatus);
         alert("Data updated successfully");
